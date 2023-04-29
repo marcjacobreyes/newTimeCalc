@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" 
+    content="IE=edge">
+    <meta name="viewport" 
+    content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css" />
+    <title>Biweekly TimeSheet Calculator</title>
+</head>
+<body>
+    <div class ="container">
+        <header class="person">
+            <div class="person-avatar">
+            <h1 class="person_name"></h1>
+        </header> 
+        <section class="tableHead">
+            <input type="text" class="orange" value="Days" disabled/>
+            <input type="text" class="blue" value="Start Work" disabled/>
+            <input type="text" class="green" value="Start Break" disabled/>
+            <input type="text" class="green" value="End Break" disabled/>
+            <input type="text" class="blue" value="End Work" disabled/>
+            <input type="text" class="purple" value="Hours / Min" disabled/>
+
+        </section>
+
+        <section class="tableBody">
+            <div class="tr">
+                <form>
+                    <th>
+                        <input type="text" class="orange" placeholder="Enter Day" />
+                    </th>
+                    <td>
+                        <input type="time" class="blue" id="start-work" />
+                    </td>
+                    <td>
+                        <input type="time" class="green" id="start-break" />
+                    </td>
+                    <td>
+                        <input type="time" class="green" id="end-break" />
+                    </td>
+                    <td>
+                        <input type="time" class="blue" id="end-work" />
+                    </td>
+                    <td>
+                        <input class="workedHours purple" value="00:00" disabled />
+                    </td>
+                    <td><button class="btn" type="submit">ADD</button></td>
+                </form>
+            </div>
+
+            <div class="tr"></div>
+            <div class="tr"></div>
+            <div class="tr"></div>
+            <div class="tr"></div>
+            <div class="tr"></div>
+        </section>
+
+        <section class="tableFooter">
+            <input type="text" class="red purple" value="Total" disabled />
+
+            <input id="totalWorkedHours" class="red" value="Work Hours" disabled />
+
+        </section>
+    </div>
+  
+    
+    <script src ="script.js"></script>
+</body>
+</html>

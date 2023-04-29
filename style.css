@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+*{
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0; 
+}
+
+:root {
+    --dark-green: #008006;
+    --light-green: #effbf0;
+    --dark-purple: #6a52ff;
+    --light-purple: #f3f1ff; 
+    --dark-orange: #d2781a;
+    --light-orange: #fdf3eb;
+    --dark-blue: #2998ff;
+    --light-blue: #f0f7ff;
+    --dark-red: #cf2e2e;
+    --light-red: #f5efef;
+    --dark-gray: #676b6e;
+    --light-gray: #f6f6f6;
+}
+
+.blue {
+    background-color: var(--light-blue);
+    color: var(--dark-blue);
+}
+
+.green {
+    background-color: var(--light-green);
+    color: var(--dark-green);
+}
+
+.purple {
+    background-color: var(--light-purple);
+    color: var(--dark-purple);
+}
+
+.orange {
+    background-color: var(--light-orange);
+    color: var(--dark-orange);
+}
+
+.red {
+    background-color: var(--light-red);
+    color: var(--dark-red);
+}
+
+body {
+    background-color: var(--dark-green);
+}
+
+.container {
+    width: 1000px; 
+    position: relative;
+    margin: auto;
+    margin-top: 100px;
+    background-color: var(--light-green);
+    padding: 1rem;
+    padding-top: 6rem; 
+    padding-left: 6rem;
+    border-radius: 1rem;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    box-shadow: 5px 5px 15px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* Person */ 
+
+.person {
+    /*background-color: rgb(255, 255, 163);*/ 
+    position: relative;
+    top: -60px;
+    left: 350px;
+    display: flex; 
+    align-items: flex-end;
+}
+
+.person-avatar {
+    height: 135px;
+    width: 170px;
+    border-radius: 20%;
+    background-color: var(--dark-green);
+    background: url(https://dpceventservices.com/wp-content/uploads/2021/06/DPC-Event-Services-Black-Menu-Logo.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+section.form {
+    display: flex; 
+    gap: 30px;
+}
+
+section.tableBody {
+    margin-top: 1rem;
+    flex-direction: column;
+}
+
+input {
+    max-width: 115px;
+    outline: none;
+    border: none; 
+    border-radius: 20px;
+    height: 15px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    padding: 0.470rem 0.70rem; 
+    text-align: center;
+}
+
+.tableHead input {
+    height: 50px;
+}
+
+.tableFooter {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.tableFooter #totalWorkedHours {
+    margin-right: 90px;
+}
+
+.btn {
+    background-color: inherit;
+    border: 1px solid --light-green;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 500;
+    padding: 0.15rem 0.75rem;
+    border-radius: 5px; 
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
+}
+
+.btn:hover {
+    background-color: var(--light-green);
+    color: var(--dark-green);
+}
+
+.btn.btn:active {
+    transform: calc(0.95);
+}
+
+.btn-green {
+    background-color: var(--light-green);
+    color: #eee;
+}
