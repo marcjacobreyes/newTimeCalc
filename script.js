@@ -51,7 +51,7 @@ forms.forEach((form) =>
     let submitBtn = e.target.querySelector(".btn");
 
     // Validation
-    //validateSubmission(day,startWork,endWork,submitBtn);
+    validateSubmission(day,startWork,endWork,submitBtn);
 
     //Calc the daily hours worked
     worked.value = calcDailyWorkedHours(startWork,endWork,startBreak,endBreak);
