@@ -37,9 +37,9 @@ console.log(createForm());
 })();
 
 const forms=document.querySelectorAll("form");
+// console.log(forms);
 
-forms.forEach((form) => 
-    form.addEventListener("submit", function (e) {
+    function handleFormSubmission(e) {
         e.preventDefault();
 
     const day = e.target.querySelector(".orange").value;
@@ -51,26 +51,22 @@ forms.forEach((form) =>
     let submitBtn = e.target.querySelector(".btn");
 
     // Validation
-    validateSubmission(day,startWork,endWork,submitBtn);
-
-    //Calc the daily hours worked
-    worked.value = calcDailyWorkedHours(startWork,endWork,startBreak,endBreak);
-    })
-
-);
-
+    if (validateSubmission(day,startWork,endWork,submitBtn)) {
+        worked.value = calcDailyWorkedHours(startWork, endWork, startBreak, endBreak);
+        calculateTotalWorkedHours();    
+    }else{
+        return;
+    }
+}
 
 //todo create validation function
 
 function validateSubmission(day,startWork,endWork,submitBtn) {
-    if ((day === "")||(startWork==="")||(endWork==="")) {
-        alert("Complete work day, start and end work hour");
-    } // end if branch
-    else{
-        submitBtn.classList.add("btn-green");
-        submitBtn.innerHTML="&#10004";
-        return true;
-    } // end else branch
+    ((day === "")||(startWork==="")||(endWork==="")) ?
+        alert("Complete work day, start and end work hour") :
+        (submitBtn.classList.add("btn-green"),
+        (submitBtn.innerHTML="&#10004"),
+        true);
 }
 
 
@@ -126,7 +122,7 @@ function calculateTotalWorkedHours() {
 function minutesToHoursAndMinutes(minutes)  {
     const hours = Math.floor(minutes / 60);
     const mins = minutes % 60;
-    return (hours+"").padStart(2,"0") + ":" + (mins+"").padStart(2,"0");
+    return (hours+"").padStart(2,"0")+":"+(mins+"").padStart(2,"0");
 }
 
 
