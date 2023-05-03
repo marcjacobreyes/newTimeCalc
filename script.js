@@ -123,7 +123,7 @@ function minutesToHoursAndMinutes(minutes)  {
     const hours = Math.floor(minutes / 60);
     const mins = minutes % 60;
     return (hours+"").padStart(2,"0")+":"+(mins+"").padStart(2,"0");
-}
+} // this is the end of the minutesToHoursAndMinutes
 
 
 
