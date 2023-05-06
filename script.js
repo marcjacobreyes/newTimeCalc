@@ -39,8 +39,8 @@ console.log(createForm());
 const forms=document.querySelectorAll("form");
 // console.log(forms);
 
-    function handleFormSubmission(e) {
-        e.preventDefault();
+function handleFormSubmission(e) {
+    e.preventDefault();
 
     const day = e.target.querySelector(".orange").value;
     const startWork = e.target.querySelector("#start-work").value;
