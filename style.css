@@ -151,3 +151,27 @@ input {
     margin-left: 1.5rem;
     margin-bottom: -0.5rem;
 }
+
+/* Add this at the bottom of your CSS file */
+@media (max-width: 767px) {
+    .container {
+      width: 95%;
+      margin: 0 auto;
+      padding: 10px;
+      box-sizing: border-box;
+    }
+  
+    .tableHead input, .tableFooter input {
+      font-size: 12px;
+    }
+  
+    .tableBody input[type="time"], .tableBody input[type="text"] {
+      font-size: 10px;
+    }
+  
+    .btn {
+      font-size: 12px;
+      padding: 5px 10px;
+    }
+  }
+  
