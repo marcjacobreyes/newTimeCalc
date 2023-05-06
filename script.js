@@ -29,12 +29,13 @@ function createForm() {
 }
 console.log(createForm());
 
-(async () => {
-    // …
-    tableBodyTrs.forEach((tr) => {
-      tr.appendChild(createForm());
+const tableBodies = document.querySelectorAll(".tableBody");
+tableBodies.forEach((tableBody) => {
+    const trs = tableBody.querySelectorAll(".tr");
+    trs.forEach((tr) => {
+        tr.appendChild(createForm());
     });
-})();
+});
 
 const forms=document.querySelectorAll("form");
 // console.log(forms);
