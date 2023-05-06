@@ -146,3 +146,8 @@ input {
     background-color: var(--light-green);
     color: #eee;
 }
+
+.week-heading {
+    margin-left: -3rem;
+    margin-bottom: 0.5rem;
+}
