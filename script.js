@@ -3,27 +3,27 @@ console.log(tableBodyTrs);
 
 function createForm() {
     let form = document.createElement("form");
-    form.innerHTML = `                   
-<th>
-    <input type="text" class="orange" placeholder="Enter Day" />
-</th>
-<td>
-    <input type="time" class="blue" id="start-work" />
-</td>
-<td>
-    <input type="time" class="green" id="start-break" />
-</td>
-<td>
-    <input type="time" class="green" id="end-break" />
-</td>
-<td>
-    <input type="time" class="blue" id="end-work" />
-</td>
-<td>
-    <input class="workedHours purple" value="00:00" disabled />
-</td>
-<td><button class="btn" type="submit">ADD</button></td>
-`;
+    form.innerHTML = `
+        <th>
+            <input type="text" class="orange" placeholder="Enter Day" />
+        </th>
+        <td>
+            <input type="time" class="blue start-work" />
+        </td>
+        <td>
+            <input type="time" class="green start-break" />
+        </td>
+        <td>
+            <input type="time" class="green end-break" />
+        </td>
+        <td>
+            <input type="time" class="blue end-work" />
+        </td>
+        <td>
+            <input class="workedHours purple" value="00:00" disabled />
+        </td>
+        <td><button class="btn" type="submit">ADD</button></td>
+    `;
     form.onsubmit = (e) => handleFormSubmission(e);
     return form;
 }
@@ -44,18 +44,18 @@ function handleFormSubmission(e) {
     e.preventDefault();
 
     const day = e.target.querySelector(".orange").value;
-    const startWork = e.target.querySelector("#start-work").value;
-    const startBreak = e.target.querySelector("#start-break").value;
-    const endBreak = e.target.querySelector("#end-break").value;
-    const endWork = e.target.querySelector("#end-work").value;
+    const startWork = e.target.querySelector(".start-work").value;
+    const startBreak = e.target.querySelector(".start-break").value;
+    const endBreak = e.target.querySelector(".end-break").value;
+    const endWork = e.target.querySelector(".end-work").value;
     let worked = e.target.querySelector(".workedHours");
     let submitBtn = e.target.querySelector(".btn");
 
     // Validation
-    if (validateSubmission(day,startWork,endWork,submitBtn)) {
+    if (validateSubmission(day, startWork, endWork, submitBtn)) {
         worked.value = calcDailyWorkedHours(startWork, endWork, startBreak, endBreak);
-        calculateTotalWorkedHours();    
-    }else{
+        calculateTotalWorkedHours();
+    } else {
         return;
     }
 }
@@ -125,6 +125,3 @@ function minutesToHoursAndMinutes(minutes)  {
     const mins = minutes % 60;
     return (hours+"").padStart(2,"0")+":"+(mins+"").padStart(2,"0");
 } // this is the end of the minutesToHoursAndMinutes
-
-
-
