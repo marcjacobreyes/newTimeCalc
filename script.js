@@ -22,10 +22,11 @@ function createForm() {
         <td>
             <input class="workedHours purple" value="00:00" disabled />
         </td>
-        <td><button class="btn" type="submit">ADD</button></td>
     `;
+    form.onchange = (e) => handleFormChange(e);  // Note this change
     return form;
 }
+
 console.log(createForm());
 
 const tableBodies = document.querySelectorAll(".tableBody");
@@ -41,19 +42,17 @@ tableBodies.forEach((tableBody) => {
 const forms=document.querySelectorAll("form");
 // console.log(forms);
 
-function handleFormSubmission(e) {
-    e.preventDefault();
-
-    const day = e.target.querySelector(".orange").value;
-    const startWork = e.target.querySelector(".start-work").value;
-    const startBreak = e.target.querySelector(".start-break").value;
-    const endBreak = e.target.querySelector(".end-break").value;
-    const endWork = e.target.querySelector(".end-work").value;
-    let worked = e.target.querySelector(".workedHours");
-    let submitBtn = e.target.querySelector(".btn");
+function handleFormChange(e) {
+    const form = e.target.form;
+    const day = form.querySelector(".orange").value;
+    const startWork = form.querySelector(".start-work").value;
+    const startBreak = form.querySelector(".start-break").value;
+    const endBreak = form.querySelector(".end-break").value;
+    const endWork = form.querySelector(".end-work").value;
+    let worked = form.querySelector(".workedHours");
 
     // Validation
-    if (validateSubmission(day, startWork, endWork, submitBtn)) {
+    if (validateSubmission(day, startWork, endWork)) {
         worked.value = calcDailyWorkedHours(startWork, endWork, startBreak, endBreak);
         calculateTotalWorkedHours();
     } else {
@@ -61,15 +60,18 @@ function handleFormSubmission(e) {
     }
 }
 
+
 //todo create validation function
 
-function validateSubmission(day,startWork,endWork,submitBtn) {
-    ((day === "")||(startWork==="")||(endWork==="")) ?
-        alert("Complete work day, start and end work hour") :
-        (submitBtn.classList.add("btn-green"),
-        (submitBtn.innerHTML="&#10004"),
-        true);
+function validateSubmission(day,startWork,endWork) {
+    if ((day === "")||(startWork==="")||(endWork==="")) {
+        alert("Complete work day, start and end work hour");
+        return false;
+    } else {
+        return true;
+    }
 }
+
 
 
 
