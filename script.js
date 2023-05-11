@@ -24,7 +24,6 @@ function createForm() {
         </td>
         <td><button class="btn" type="submit">ADD</button></td>
     `;
-    form.onsubmit = (e) => handleFormSubmission(e);
     return form;
 }
 console.log(createForm());
@@ -33,7 +32,9 @@ const tableBodies = document.querySelectorAll(".tableBody");
 tableBodies.forEach((tableBody) => {
     const trs = tableBody.querySelectorAll(".tr");
     trs.forEach((tr) => {
-        tr.appendChild(createForm());
+        const form = createForm();
+        tr.appendChild(form);
+        form.onsubmit = (e) => handleFormSubmission(e);
     });
 });
 
