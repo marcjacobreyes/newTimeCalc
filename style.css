@@ -55,7 +55,7 @@ body {
     width: 1000px; 
     position: -webkit-sticky;
     margin: auto;
-    margin-top: 5px;
+    margin-top: 40px;
     background-color: var(--light-green);
     padding-top: 2rem;
     padding-left: 8.5rem;

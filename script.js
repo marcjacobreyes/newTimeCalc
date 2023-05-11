@@ -27,20 +27,14 @@ function createForm() {
     return form;
 }
 
-console.log(createForm());
-
 const tableBodies = document.querySelectorAll(".tableBody");
 tableBodies.forEach((tableBody) => {
     const trs = tableBody.querySelectorAll(".tr");
     trs.forEach((tr) => {
         const form = createForm();
         tr.appendChild(form);
-        form.onsubmit = (e) => handleFormSubmission(e);
     });
 });
-
-const forms=document.querySelectorAll("form");
-// console.log(forms);
 
 function handleFormChange(e) {
     const form = e.target.form;
@@ -103,28 +97,21 @@ function calcDailyWorkedHours(startWork, endWork, startBreak, endBreak) {
 
 function calculateTotalWorkedHours() {
     const allWorkedHours = document.querySelectorAll(".workedHours");
-    console.log(allWorkedHours);
 
-    let arrayOfWorkedHours = Array.form(allWorkedHours);
-    console.log(arrayOfWorkedHours);
+    let arrayOfWorkedHours = Array.from(allWorkedHours);
     let newWorkedHour = arrayOfWorkedHours.map((workedHour) => workedHour.value);
-    console.log(newWorkedHours);
-    let arr = [];
-    arr.push(newWorkedHours);
-    console.log(arr);
 
-    let convertedHours = newWorkedHours.map(el=>{
+    let convertedHours = newWorkedHour.map(el=>{
         const [hours,minutes] = el.split(":");
         return parseInt(hours) * 60 + parseInt(minutes);
     });
-    console.log(convertedHours);
 
     let calculateTotalHoursWorked = convertedHours.reduce((partialSum, a) =>parseInt(partialSum + a),0);
     document.getElementById("totalWorkedHours").value = minutesToHoursAndMinutes(calculateTotalHoursWorked);
 }
 
-function minutesToHoursAndMinutes(minutes)  {
+function minutesToHoursAndMinutes(minutes) {
     const hours = Math.floor(minutes / 60);
     const mins = minutes % 60;
-    return (hours+"").padStart(2,"0")+":"+(mins+"").padStart(2,"0");
-} // this is the end of the minutesToHoursAndMinutes
+    return (hours < 10 ? '0' : '') + hours + ':' + (mins < 10 ? '0' : '') + mins;
+}
