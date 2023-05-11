@@ -54,7 +54,7 @@ body {
     width: 1000px; 
     position: static;
     margin: auto;
-    margin-top: 10px;
+    margin-top: 15px;
     background-color: var(--light-green);
     padding: 1rem;
     padding-top: 6rem; 
@@ -69,8 +69,8 @@ body {
 .person {
     /*background-color: rgb(255, 255, 163);*/ 
     position: relative;
-    top: -60px;
-    left: 365px;
+    top: -30px;
+    left: 370px;
     display: flex; 
     align-items: flex-end;
 }
@@ -87,11 +87,11 @@ body {
 
 section.form {
     display: flex; 
-    gap: 30px;
+    gap: 60px;
 }
 
 section.tableBody {
-    margin-top: 1rem;
+    margin-top: 0.5rem;
     flex-direction: column;
 }
 
