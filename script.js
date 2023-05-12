@@ -1,6 +1,7 @@
 const tableBodyTrs = document.querySelectorAll(".tableBody .tr")
 console.log(tableBodyTrs);
 
+
 function createForm() {
     let form = document.createElement("form");
     form.innerHTML = `
@@ -23,20 +24,14 @@ function createForm() {
             <input class="workedHours purple" value="00:00" disabled />
         </td>
     `;
-    form.onchange = (e) => handleFormChange(e);  // Note this change
+    // Add event listener to the form
+    form.addEventListener('input', handleFormChange);
     return form;
 }
 
-const tableBodies = document.querySelectorAll(".tableBody");
-tableBodies.forEach((tableBody) => {
-    const trs = tableBody.querySelectorAll(".tr");
-    trs.forEach((tr) => {
-        const form = createForm();
-        tr.appendChild(form);
-    });
-});
-
 function handleFormChange(e) {
+    console.log('handleFormChange called');
+    
     const form = e.target.form;
     const day = form.querySelector(".orange").value;
     const startWork = form.querySelector(".start-work").value;
@@ -44,6 +39,12 @@ function handleFormChange(e) {
     const endBreak = form.querySelector(".end-break").value;
     const endWork = form.querySelector(".end-work").value;
     let worked = form.querySelector(".workedHours");
+
+    console.log('day:', day);
+    console.log('startWork:', startWork);
+    console.log('startBreak:', startBreak);
+    console.log('endBreak:', endBreak);
+    console.log('endWork:', endWork);
 
     // Validation
     if (validateSubmission(day, startWork, endWork)) {
@@ -55,8 +56,6 @@ function handleFormChange(e) {
 }
 
 
-//todo create validation function
-
 function validateSubmission(day,startWork,endWork) {
     if ((day === "")||(startWork==="")||(endWork==="")) {
         alert("Complete work day, start and end work hour");
@@ -66,15 +65,18 @@ function validateSubmission(day,startWork,endWork) {
     }
 }
 
-
-
-
-//todo create function calcDailyHours
 function calcDailyWorkedHours(startWork, endWork, startBreak, endBreak) {
+    console.log('calcDailyWorkedHours called');
+    
     startWork = startWork.split(":");
     endWork = endWork.split(":");
     startBreak = startBreak.split(":");
     endBreak = endBreak.split(":");
+  
+    console.log('startWork:', startWork);
+    console.log('endWork:', endWork);
+    console.log('startBreak:', startBreak);
+    console.log('endBreak:', endBreak);
   
     // Work Time
     const startWorkDate = new Date(0, 0, 0, startWork[0], startWork[1], 0);
@@ -92,8 +94,12 @@ function calcDailyWorkedHours(startWork, endWork, startBreak, endBreak) {
     diffFinal -= hours * 1000 * 60 * 60;
     const minutes = Math.floor(diffFinal / 1000 / 60);
   
-    return (hours < 10 ? "0" : "") + hours + ":" + (minutes < 10 ? "0" : "") + minutes;
-}//end of calcDailyWorkedHours
+    const result = (hours < 10 ? "0" : "") + hours + ":" + (minutes < 10 ? "0" : "") + minutes;
+    
+    console.log('result:', result);
+    
+    return result;
+}
 
 function calculateTotalWorkedHours() {
     const allWorkedHours = document.querySelectorAll(".workedHours");
@@ -115,3 +121,15 @@ function minutesToHoursAndMinutes(minutes) {
     const mins = minutes % 60;
     return (hours < 10 ? '0' : '') + hours + ':' + (mins < 10 ? '0' : '') + mins;
 }
+
+// Iterate over each tableBody section
+tableBodySections.forEach((section) => {
+    // Create 5 form for each tableBody section
+    for (let i = 0; i < 5; i++) {
+        const tr = document.createElement('div');
+        tr.className = 'tr';
+        const form = createForm();
+        tr.appendChild(form);
+        section.appendChild(tr);
+    }
+});
