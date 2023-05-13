@@ -125,6 +125,45 @@ input {
     margin-left: 30px;
     margin-bottom: 0.5rem;
     margin-top: 0.5rem;
-    font-family: 'Lato', sans-serif;
+}
+
+.hourly-rate {
+    position: absolute;
+    right: 470px;
+    font-family: "Poppins", sans-serif;
+    font-size: 15px;
+}
+
+.hourly-rate::placeholder {
+    font-size: 15px;
+    font-family: "Poppins", sans-serif;
+}
+
+.-bonus {
+    position: absolute;
+    right: 470px;
+    top: 35px;
+    font-family: "Poppins", sans-serif;
+    font-size: 15px;
+}
+
+.hourly-rate input {
+    max-width: 210px;
+}
+
+.-bonus input {
+    max-width: 210px;
+}
+
+.-mileage {
+    position: absolute;
+    right: 470px;
+    top: 70px;
+    font-family: "Poppins", sans-serif;
+    font-size: 15px;
+}
+
+.-mileage input {
+    max-width: 210px;
 }
   
