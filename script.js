@@ -1,7 +1,6 @@
 const tableBodyTrs = document.querySelectorAll(".tableBody .tr")
 console.log(tableBodyTrs);
 
-
 function createForm() {
     let form = document.createElement("form");
     form.innerHTML = `
@@ -24,10 +23,18 @@ function createForm() {
             <input class="workedHours purple" value="00:00" disabled />
         </td>
     `;
-    // Add event listener to the form
-    form.addEventListener('input', handleFormChange);
+
+    // Get all input elements inside the form
+    const inputs = form.querySelectorAll('input');
+
+    // Add event listener to each input element
+    inputs.forEach(input => {
+        input.addEventListener('input', handleFormChange);
+    });
+
     return form;
 }
+
 
 function handleFormChange(e) {
     console.log('handleFormChange called');
@@ -70,26 +77,31 @@ function calcDailyWorkedHours(startWork, endWork, startBreak, endBreak) {
     
     startWork = startWork.split(":");
     endWork = endWork.split(":");
-    startBreak = startBreak.split(":");
-    endBreak = endBreak.split(":");
   
     console.log('startWork:', startWork);
     console.log('endWork:', endWork);
-    console.log('startBreak:', startBreak);
-    console.log('endBreak:', endBreak);
   
     // Work Time
     const startWorkDate = new Date(0, 0, 0, startWork[0], startWork[1], 0);
     const endWorkDate = new Date(0, 0, 0, endWork[0], endWork[1], 0);
     const diffWork = endWorkDate.getTime() - startWorkDate.getTime();
   
-    // Break Time
-    const startBreakDate = new Date(0, 0, 0, startBreak[0], startBreak[1], 0);
-    const endBreakDate = new Date(0, 0, 0, endBreak[0], endBreak[1], 0);
-    const diffBreak = endBreakDate.getTime() - startBreakDate.getTime();
+    let diffFinal = isNaN(diffWork) ? 0 : diffWork;
   
-    let diffFinal = (isNaN(diffWork) ? 0 : diffWork) - (isNaN(diffBreak) ? 0 : diffBreak);
+    if (startBreak && endBreak) {
+        startBreak = startBreak.split(":");
+        endBreak = endBreak.split(":");
+        console.log('startBreak:', startBreak);
+        console.log('endBreak:', endBreak);
+        
+        // Break Time
+        const startBreakDate = new Date(0, 0, 0, startBreak[0], startBreak[1], 0);
+        const endBreakDate = new Date(0, 0, 0, endBreak[0], endBreak[1], 0);
+        const diffBreak = endBreakDate.getTime() - startBreakDate.getTime();
   
+        diffFinal -= isNaN(diffBreak) ? 0 : diffBreak;
+    }
+
     let hours = Math.floor(diffFinal / 1000 / 60 / 60);
     diffFinal -= hours * 1000 * 60 * 60;
     const minutes = Math.floor(diffFinal / 1000 / 60);
