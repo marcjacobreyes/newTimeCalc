@@ -122,14 +122,11 @@ function minutesToHoursAndMinutes(minutes) {
     return (hours < 10 ? '0' : '') + hours + ':' + (mins < 10 ? '0' : '') + mins;
 }
 
-// Iterate over each tableBody section
-tableBodySections.forEach((section) => {
-    // Create 5 form for each tableBody section
-    for (let i = 0; i < 5; i++) {
-        const tr = document.createElement('div');
-        tr.className = 'tr';
-        const form = createForm();
-        tr.appendChild(form);
-        section.appendChild(tr);
-    }
+// Iterate over each tr
+tableBodyTrs.forEach((tr) => {
+    // Create form for the tr
+    const form = createForm();
+    
+    // Append the form to the tr
+    tr.appendChild(form);
 });
