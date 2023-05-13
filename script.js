@@ -1,4 +1,4 @@
-const tableBodyTrs = document.querySelectorAll(".tableBody .tr")
+const tableBodyTrs = document.querySelectorAll(".tr")
 console.log(tableBodyTrs);
 
 function createForm() {
@@ -29,48 +29,45 @@ function createForm() {
 
     // Add event listener to each input element
     inputs.forEach(input => {
-        input.addEventListener('input', handleFormChange);
+        input.addEventListener('change', handleFormChange);
     });
 
     return form;
 }
 
-
 function handleFormChange(e) {
     console.log('handleFormChange called');
     
     const form = e.target.form;
-    const day = form.querySelector(".orange").value;
     const startWork = form.querySelector(".start-work").value;
     const startBreak = form.querySelector(".start-break").value;
     const endBreak = form.querySelector(".end-break").value;
     const endWork = form.querySelector(".end-work").value;
     let worked = form.querySelector(".workedHours");
 
-    console.log('day:', day);
     console.log('startWork:', startWork);
     console.log('startBreak:', startBreak);
     console.log('endBreak:', endBreak);
     console.log('endWork:', endWork);
 
     // Validation
-    if (validateSubmission(day, startWork, endWork)) {
+    if (validateSubmission(startWork, endWork)) {
         worked.value = calcDailyWorkedHours(startWork, endWork, startBreak, endBreak);
         calculateTotalWorkedHours();
-    } else {
-        return;
     }
 }
 
-
-function validateSubmission(day,startWork,endWork) {
-    if ((day === "")||(startWork==="")||(endWork==="")) {
-        alert("Complete work day, start and end work hour");
+function validateSubmission(startWork, endWork) {
+    if (startWork === "" || endWork === "") {
+        if (document.activeElement.tagName !== 'INPUT') {
+            alert("Please complete start and end work hour");
+        }
         return false;
     } else {
         return true;
     }
 }
+
 
 function calcDailyWorkedHours(startWork, endWork, startBreak, endBreak) {
     console.log('calcDailyWorkedHours called');
