@@ -68,7 +68,6 @@ function validateSubmission(startWork, endWork) {
     }
 }
 
-
 function calcDailyWorkedHours(startWork, endWork, startBreak, endBreak) {
     console.log('calcDailyWorkedHours called');
     
@@ -79,9 +78,15 @@ function calcDailyWorkedHours(startWork, endWork, startBreak, endBreak) {
     console.log('endWork:', endWork);
   
     // Work Time
-    const startWorkDate = new Date(0, 0, 0, startWork[0], startWork[1], 0);
-    const endWorkDate = new Date(0, 0, 0, endWork[0], endWork[1], 0);
-    const diffWork = endWorkDate.getTime() - startWorkDate.getTime();
+    let startWorkDate = new Date(0, 0, 0, startWork[0], startWork[1], 0);
+    let endWorkDate = new Date(0, 0, 0, endWork[0], endWork[1], 0);
+
+    // If end time is earlier than start time, assume it's the next day
+    if (endWorkDate < startWorkDate) {
+        endWorkDate.setDate(endWorkDate.getDate() + 1);
+    }
+
+    let diffWork = endWorkDate.getTime() - startWorkDate.getTime();
   
     let diffFinal = isNaN(diffWork) ? 0 : diffWork;
   
@@ -92,9 +97,15 @@ function calcDailyWorkedHours(startWork, endWork, startBreak, endBreak) {
         console.log('endBreak:', endBreak);
         
         // Break Time
-        const startBreakDate = new Date(0, 0, 0, startBreak[0], startBreak[1], 0);
-        const endBreakDate = new Date(0, 0, 0, endBreak[0], endBreak[1], 0);
-        const diffBreak = endBreakDate.getTime() - startBreakDate.getTime();
+        let startBreakDate = new Date(0, 0, 0, startBreak[0], startBreak[1], 0);
+        let endBreakDate = new Date(0, 0, 0, endBreak[0], endBreak[1], 0);
+
+        // If end break time is earlier than start break time, assume it's the next day
+        if (endBreakDate < startBreakDate) {
+            endBreakDate.setDate(endBreakDate.getDate() + 1);
+        }
+
+        let diffBreak = endBreakDate.getTime() - startBreakDate.getTime();
   
         diffFinal -= isNaN(diffBreak) ? 0 : diffBreak;
     }
@@ -109,6 +120,7 @@ function calcDailyWorkedHours(startWork, endWork, startBreak, endBreak) {
     
     return result;
 }
+
 
 function calculateTotalWorkedHours() {
     const allWorkedHours = document.querySelectorAll(".workedHours");
@@ -139,3 +151,35 @@ tableBodyTrs.forEach((tr) => {
     // Append the form to the tr
     tr.appendChild(form);
 });
+
+function calculateTotalPay() {
+    const hourlyRateInput = document.getElementById('hourlyRate');
+    const bonusInput = document.getElementById('bonus');
+    const mileageInput = document.getElementById('mileage');
+    const totalWorkedHoursInput = document.getElementById('totalWorkedHours');
+    const totalPayInput = document.getElementById('totalPay');  // assume this is the id of your total pay input field
+
+    const hourlyRate = parseFloat(hourlyRateInput.value) || 0;
+    const bonus = parseFloat(bonusInput.value) || 0;
+    const mileage = parseFloat(mileageInput.value) || 0;
+    const totalWorkedHours = hoursAndMinutesToDecimal(totalWorkedHoursInput.value);
+
+    const costPerMile = 0.51; // adjust this to your needs
+
+    const totalPay = (hourlyRate * totalWorkedHours) + bonus + (mileage * costPerMile);
+
+    totalPayInput.value = totalPay.toFixed(2);  // round to 2 decimal places
+}
+
+function hoursAndMinutesToDecimal(time) {
+    const [hours, minutes] = time.split(':').map(parseFloat);
+    return hours + (minutes / 60);
+}
+
+const hourlyRateInput = document.getElementById('hourlyRate');
+const bonusInput = document.getElementById('bonus');
+const mileageInput = document.getElementById('mileage');
+
+hourlyRateInput.addEventListener('change', calculateTotalPay);
+bonusInput.addEventListener('change', calculateTotalPay);
+mileageInput.addEventListener('change', calculateTotalPay);

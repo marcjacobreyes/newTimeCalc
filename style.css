@@ -77,8 +77,8 @@ body {
 }
 
 .person-avatar {
-    height: 130px;
-    width: 170px;
+    height: 125px;
+    width: 160px;
     border-radius: 20%;
     background-color: var(--dark-green);
     background: url(https://dpceventservices.com/wp-content/uploads/2021/06/DPC-Event-Services-Black-Menu-Logo.png);
@@ -125,6 +125,7 @@ input {
     margin-left: 30px;
     margin-bottom: 0.5rem;
     margin-top: 0.5rem;
+    font-family: "Lato", sans-serif;
 }
 
 .hourly-rate {
