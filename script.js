@@ -1,3 +1,11 @@
+/*
+Designed by Marc Jacob Reyes
+05/15/2023
+-- This application will track the hours and pay of the user in a html and javascript web page, it will give you the total hours worked in the biwekly
+work period. Then the user will enter the hourly wage, any bonuses, and mileage driven and calculate the total pay for the period.
+.51c per mile
+
+*/ 
 const tableBodyTrs = document.querySelectorAll(".tr")
 console.log(tableBodyTrs);
 
@@ -33,7 +41,7 @@ function createForm() {
     });
 
     return form;
-}
+} // end of createForm function
 
 function handleFormChange(e) {
     console.log('handleFormChange called');
@@ -55,7 +63,7 @@ function handleFormChange(e) {
         worked.value = calcDailyWorkedHours(startWork, endWork, startBreak, endBreak);
         calculateTotalWorkedHours();
     }
-}
+} // end of handleFormChange function
 
 function validateSubmission(startWork, endWork) {
     if (startWork === "" || endWork === "") {
@@ -66,7 +74,7 @@ function validateSubmission(startWork, endWork) {
     } else {
         return true;
     }
-}
+} // end of validateSubmission function
 
 function calcDailyWorkedHours(startWork, endWork, startBreak, endBreak) {
     console.log('calcDailyWorkedHours called');
@@ -119,7 +127,7 @@ function calcDailyWorkedHours(startWork, endWork, startBreak, endBreak) {
     console.log('result:', result);
     
     return result;
-}
+} // end of calculateDailyWorkedHours
 
 
 function calculateTotalWorkedHours() {
@@ -128,20 +136,24 @@ function calculateTotalWorkedHours() {
     let arrayOfWorkedHours = Array.from(allWorkedHours);
     let newWorkedHour = arrayOfWorkedHours.map((workedHour) => workedHour.value);
 
-    let convertedHours = newWorkedHour.map(el=>{
+    let convertedHours = newWorkedHour.map(el => {
         const [hours,minutes] = el.split(":");
         return parseInt(hours) * 60 + parseInt(minutes);
     });
 
-    let calculateTotalHoursWorked = convertedHours.reduce((partialSum, a) =>parseInt(partialSum + a),0);
-    document.getElementById("totalWorkedHours").value = minutesToHoursAndMinutes(calculateTotalHoursWorked);
-}
+    let calculateTotalHoursWorked = convertedHours.reduce((partialSum, a) => parseInt(partialSum + a), 0);
+
+    // convert the total minutes to decimal hours
+    let totalDecimalHours = hoursAndMinutesToDecimal(minutesToHoursAndMinutes(calculateTotalHoursWorked));
+
+    document.getElementById("totalWorkedHours").value = totalDecimalHours.toFixed(2); // toFixed(2) will round it to 2 decimal places
+} // end of calculateTotalWorkedHours
 
 function minutesToHoursAndMinutes(minutes) {
     const hours = Math.floor(minutes / 60);
     const mins = minutes % 60;
     return (hours < 10 ? '0' : '') + hours + ':' + (mins < 10 ? '0' : '') + mins;
-}
+} // end of minutesToHoursAndMinutes
 
 // Iterate over each tr
 tableBodyTrs.forEach((tr) => {
@@ -162,24 +174,26 @@ function calculateTotalPay() {
     const hourlyRate = parseFloat(hourlyRateInput.value) || 0;
     const bonus = parseFloat(bonusInput.value) || 0;
     const mileage = parseFloat(mileageInput.value) || 0;
-    const totalWorkedHours = hoursAndMinutesToDecimal(totalWorkedHoursInput.value);
+    const totalWorkedHours = parseFloat(totalWorkedHoursInput.value) || 0;
 
     const costPerMile = 0.51; // adjust this to your needs
 
     const totalPay = (hourlyRate * totalWorkedHours) + bonus + (mileage * costPerMile);
 
     totalPayInput.value = totalPay.toFixed(2);  // round to 2 decimal places
-}
+} // end of calculateTotalPay function
 
 function hoursAndMinutesToDecimal(time) {
     const [hours, minutes] = time.split(':').map(parseFloat);
-    return hours + (minutes / 60);
-}
+    return hours + (minutes / 60.00);
+} // end of hoursAndMinutesToDecimal function
 
 const hourlyRateInput = document.getElementById('hourlyRate');
 const bonusInput = document.getElementById('bonus');
-const mileageInput = document.getElementById('mileage');
+const mileageInput = document.getElementById('mileage'); 
+// lets the user input hourly wage, any bonuses, and mileage driven. 
 
 hourlyRateInput.addEventListener('change', calculateTotalPay);
 bonusInput.addEventListener('change', calculateTotalPay);
 mileageInput.addEventListener('change', calculateTotalPay);
+// allows for change event listeners on each of these inputs hourly wage, bonus, mileage and calculates the Total Pay for the biweekly period.

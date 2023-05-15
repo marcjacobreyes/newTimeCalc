@@ -17,7 +17,7 @@
     --dark-blue: #2998ff;
     --light-blue: #f0f7ff;
     --dark-red: #cf2e2e;
-    --light-red: #f5efef;
+    --light-red: #ffe5e5;
     --dark-gray: #676b6e;
     --light-gray: #f6f6f6;
 }
@@ -168,5 +168,16 @@ input {
     max-width: 210px;
 }
 
+.date-input {
+    position: absolute;
+    right: 950px;
+    top: 100px;
+    font-family: "Poppins", sans-serif;
+    font-size: 15px;
+}
+
+.date-input input {
+    max-width: 210px;
+}
 
   
