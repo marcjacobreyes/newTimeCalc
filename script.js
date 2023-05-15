@@ -58,8 +58,10 @@ function handleFormChange(e) {
     console.log('endBreak:', endBreak);
     console.log('endWork:', endWork);
 
-    // Validation
-    if (validateSubmission(startWork, endWork)) {
+    // If all fields are empty, reset workedHours
+    if (startWork === "" && startBreak === "" && endBreak === "" && endWork === "") {
+        worked.value = "00:00";
+    } else if (validateSubmission(startWork, endWork)) { // existing validation for startWork and endWork
         worked.value = calcDailyWorkedHours(startWork, endWork, startBreak, endBreak);
         calculateTotalWorkedHours();
     }
