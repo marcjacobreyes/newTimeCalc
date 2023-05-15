@@ -1,7 +1,7 @@
 /*
 Designed by Marc Jacob Reyes
 05/15/2023
--- This application will track the hours and pay of the user in a html and javascript web page, it will give you the total hours worked in the biwekly
+-- This application will track the hours and pay of the user in a html and javascript web page, it will give you the total hours worked in the biweekly
 work period. Then the user will enter the hourly wage, any bonuses, and mileage driven and calculate the total pay for the period.
 .51c per mile
 
