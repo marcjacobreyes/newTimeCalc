@@ -180,4 +180,16 @@ input {
     max-width: 210px;
 }
 
+.name-input input {
+    max-width: 210px;
+}
+
+.name-input {
+    position: absolute;
+    right: 1000px;
+    top: 65px;
+    font-family: "Poppins" sans-serif;
+    font-size: 15px;
+}
+
   
