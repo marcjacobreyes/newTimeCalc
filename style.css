@@ -66,8 +66,7 @@ body {
     box-shadow: 5px 5px 15px 3px rgba(0, 0, 0, 0.3);
 }
 
-/* Person */ 
-
+/* This is where we can stylize and or switch out logo and background colors*/ 
 .person {
     
     position: relative;
@@ -129,6 +128,7 @@ input {
     font-family: "Lato", sans-serif;
 }
 
+/* This is where we can edit the application to the user and mgt needs bonus, etc*/
 .hourly-rate {
     position: absolute;
     right: 470px;
@@ -193,6 +193,15 @@ input {
     font-size: 15px;
 }
 
+.special-date {
+    position: absolute;
+    right: 1000px;
+    top: 95px;
+    font-family: "Poppins", sans-serif;
+    font-size: 15px;
+}
+
+/* This is where we can edit the side bar needs and stylization*/ 
 .sidebar {
     position: fixed;
     width: 200px;
@@ -229,3 +238,4 @@ input {
     color: var(--yellow);
     padding: 33px;
 }
+
