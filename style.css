@@ -196,9 +196,14 @@ input {
 .special-date {
     position: absolute;
     right: 1000px;
-    top: 95px;
+    top: 135px;
     font-family: "Poppins", sans-serif;
     font-size: 15px;
+}
+
+.special-date input {
+    max-width: 225px;
+
 }
 
 /* This is where we can edit the side bar needs and stylization*/ 
