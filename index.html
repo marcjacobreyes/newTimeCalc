@@ -10,6 +10,7 @@
     <title>Biweekly TimeSheet Calculator - DPC Event Services</title>
 </head>
 
+
 <body>
     
     <div class="date-input">
@@ -20,6 +21,7 @@
         <label for="name"></label>
         <input type="text" id="name" placeholder=" Enter your name:" />
     </div>
+    
     <div class ="container">
         <header class="person">
             <div class="person-avatar">
@@ -38,10 +40,14 @@
             </div>
 
         </header> 
-        <section class="tabs">
-            <button class="tab" onclick="openTab(event, 'tab1')">Biweekly Time Sheet Calc</button>
-            <button class="tab" onclick="openTab(event, 'tab2')">Employee Scheduling</button>
-        </section>
+
+        <div class="sidebar-indicator">➔</div>
+
+
+        <div class="sidebar">
+            <button class="tab" onclick="openTab(event, 'tab1')">BIWEEKLY TIME SHEET</button>
+            <button class="tab" onclick="openTab(event, 'tab2')">EMPLOYEE SCHEDULING </button>
+        </div>
         
         <section class="tableHead">
             <input type="text" class="orange" value="Days" disabled/>

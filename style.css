@@ -20,6 +20,7 @@
     --light-red: #ffe5e5;
     --dark-gray: #676b6e;
     --light-gray: #f6f6f6;
+    --yellow: #616100;
 }
 
 .blue {
@@ -192,32 +193,39 @@ input {
     font-size: 15px;
 }
 
-.tabs {
-    overflow: hidden;
+.sidebar {
+    position: fixed;
+    width: 200px;
+    height: 100%;
+    left: -220px;
+    top: 0;
     background-color: var(--light-green);
+    overflow: auto;
     padding: 20px;
+    transition: 0.5s;
+}
+
+.sidebar:hover {
+    left: 0;
 }
 
 .tab {
     background-color: var(--light-green);
-    float: left;
-    border: none;
+    border: solid;
     outline: none;
     cursor: pointer;
-    padding: 14px 16px;
+    padding: 10px 20px;
     transition: 0.3s;
     font-size: 17px;
+    display: flex;
+    margin-bottom: 10px;
 }
 
-.tab:hover {
-    background-color: var(--light-gray);
+.sidebar-indicator {
+    position: fixed;
+    left: 0;
+    top: 50%;
+    background-color: var(--light-green);
+    color: var(--yellow);
+    padding: 33px;
 }
-
-.tabcontent {
-    padding: 6px 12px;
-    border-top: none;
-    display: none;
-}
-
-
-  
