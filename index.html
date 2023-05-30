@@ -9,7 +9,9 @@
     <link rel="stylesheet" href="style.css" />
     <title>Biweekly TimeSheet Calculator - DPC Event Services</title>
 </head>
+
 <body>
+    
     <div class="date-input">
         <label for="date"></label>
         <input type="text" id="date" placeholder=" Enter date submitted:" />
@@ -36,6 +38,11 @@
             </div>
 
         </header> 
+        <section class="tabs">
+            <button class="tab" onclick="openTab(event, 'tab1')">Biweekly Time Sheet Calc</button>
+            <button class="tab" onclick="openTab(event, 'tab2')">Employee Scheduling</button>
+        </section>
+        
         <section class="tableHead">
             <input type="text" class="orange" value="Days" disabled/>
             <input type="text" class="blue" value="Start Work" disabled/>
@@ -75,6 +82,8 @@
             <input type="text" class="red purple" value="Total Hours" disabled />
             <input id="totalWorkedHours" class="red" value="0" disabled />
         </section>
+
+
         
     </div>
   
