@@ -88,7 +88,8 @@ body {
 
 section.form {
     display: flex; 
-    gap: 60px;
+    gap: 10px;
+    padding: 0.50rem 0.90rem;
 }
 
 section.tableBody {
@@ -100,7 +101,7 @@ input {
     max-width: 115px;
     outline: none;
     border: none;
-    border-radius: 30px;
+    border-radius: 45px;
     height: 15px;
     font-size: 1.1rem;
     font-weight: 500;
@@ -124,7 +125,7 @@ input {
 .week-heading {
     margin-left: 30px;
     margin-bottom: 0.5rem;
-    margin-top: 0.5rem;
+    margin-top: 0.2rem;
     font-family: "Lato", sans-serif;
 }
 
