@@ -8,7 +8,7 @@
 }
 
 :root {
-    --dark-green: #008006;
+    --dark-green: #268b2c;
     --light-green: #effbf0;
     --dark-purple: #6a52ff;
     --light-purple: #f3f1ff; 
@@ -20,7 +20,7 @@
     --light-red: #ffe5e5;
     --dark-gray: #676b6e;
     --light-gray: #f6f6f6;
-    --yellow: #616100;
+    --yellow: #27292A;
 }
 
 .blue {
@@ -49,7 +49,7 @@
 }
 
 body {
-    background-color: var(--dark-green);
+    background-color: var(--yellow);
 }
 
 .container {
@@ -70,18 +70,18 @@ body {
 .person {
     
     position: relative;
-    top: -10px;
-    left: 350px;
+    top: -.50px;
+    left: 345px;
     display: flex; 
     align-items: flex;
 }
 
 .person-avatar {
-    height: 125px;
-    width: 160px;
-    border-radius: 20%;
-    background-color: var(--dark-green);
-    background: url(https://dpceventservices.com/wp-content/uploads/2021/06/DPC-Event-Services-Black-Menu-Logo.png);
+    height: 130px;
+    width: 140px;
+    border-radius: 30px;
+    background-color: var(--yellow);
+    background: url(logo-no-background.png);
     background-size: contain;
     background-repeat: no-repeat;
 }
