@@ -71,20 +71,22 @@ body {
     
     position: relative;
     top: -.50px;
-    left: 375px;
+    left: 345px;
     display: flex; 
     align-items: flex;
 }
 
 .person-avatar {
     height: 130px;
-    width: 140px;
+    width: 170px;
     border-radius: 30px;
     background-color: var(--yellow);
     background: url(logo-no-background.png);
     background-size: contain;
     background-repeat: no-repeat;
 }
+
+
 
 section.form {
     display: flex; 
@@ -245,3 +247,8 @@ input {
     padding: 33px;
 }
 
+@media (max-width: 768px) {
+    form {
+        flex-direction: column;
+    }
+}
