@@ -174,7 +174,7 @@ input {
 
 .date-input {
     position: absolute;
-    right: 1015px;
+    right: 1000px;
     top: 100px;
     font-family: "Poppins", sans-serif;
     font-size: 15px;
@@ -190,7 +190,7 @@ input {
 
 .name-input {
     position: absolute;
-    right: 1015px;
+    right: 1000px;
     top: 65px;
     font-family: "Poppins" sans-serif;
     font-size: 15px;
@@ -198,7 +198,7 @@ input {
 
 .special-date {
     position: absolute;
-    right: 1015px;
+    right: 1000px;
     top: 135px;
     font-family: "Poppins", sans-serif;
     font-size: 15px;
