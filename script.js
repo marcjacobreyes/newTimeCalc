@@ -9,6 +9,13 @@ work period. Then the user will enter the hourly wage, any bonuses, and mileage 
 const tableBodyTrs = document.querySelectorAll(".tr")
 console.log(tableBodyTrs);
 
+/* 
+1. We create a function called createForm
+2. We create a form element using document.createElement
+3. We add HTML content inside the form variable
+4. We get all input elements inside the form using querySelectorAll
+5. We add event listener to each input element using forEach
+6. We return the form element */
 function createForm() {
     let form = document.createElement("form");
     form.innerHTML = `
@@ -43,6 +50,14 @@ function createForm() {
     return form;
 } // end of createForm function
 
+
+/* 
+1. We are using event delegation to listen for change events on the form. 
+This means that we are listening for changes on the form, but we are not actually 
+listening for changes on the form. Instead, we are listening for changes on the parent element 
+(the form), and we are waiting for the event to bubble up to the form. This is a very common technique in JavaScript, 
+and it is often used when you have a lot of elements that you need to listen to, and you don’t want to write a lot of event
+ listeners on each of those elements. */
 function handleFormChange(e) {
     console.log('handleFormChange called');
     
@@ -67,6 +82,10 @@ function handleFormChange(e) {
     }
 } // end of handleFormChange function
 
+/* 
+1. Start and end work hour should not be empty. If one of them is empty, then a pop-up alert will be displayed. The alert will not be displayed if the user is inputting the hour. This is achieved by checking if the active element is input or not.
+2. If the user has completed start and end work hour, then the function will return true.
+3. If the user has not completed start and end work hour, then the function will return false. */
 function validateSubmission(startWork, endWork) {
     if (startWork === "" || endWork === "") {
         if (document.activeElement.tagName !== 'INPUT') {
@@ -78,6 +97,13 @@ function validateSubmission(startWork, endWork) {
     }
 } // end of validateSubmission function
 
+/* 
+1. First, we split the startWork and endWork into an array of hours and minutes.
+2. Then we create a new Date object with the hours and minutes from the array.
+3. We do the same for the break time.
+4. We subtract the break time from the work time.
+5. We calculate the hours and minutes of the remaining time.
+6. We return the result. */
 function calcDailyWorkedHours(startWork, endWork, startBreak, endBreak) {
     console.log('calcDailyWorkedHours called');
     
@@ -131,7 +157,20 @@ function calcDailyWorkedHours(startWork, endWork, startBreak, endBreak) {
     return result;
 } // end of calculateDailyWorkedHours
 
-
+/* 
+1. First, we grab all the elements with class name "workedHours" and save them in a variable called allWorkedHours.
+2. Then, we convert the allWorkedHours variable from a NodeList into an array of elements.
+3. We use the map method to iterate over each element of the array and extract the value of each element and save it in a new array called newWorkedHour.
+4. Now that we have an array of strings, each string containing the hours and minutes worked in the format "HH:MM", we can convert the strings into hours and minutes by using the map method again.
+5. The map method will iterate over each element of the array, split the string "HH:MM" into an array with two elements, one for hours and one for minutes, and then return a new array with the hours and minutes converted into numbers.
+6. We now have an array with the hours and minutes worked in numbers, so we can convert the minutes into hours by using the reduce method.
+7. The reduce method will iterate over each element of the array and add the numbers together.
+8. Now we have the total minutes worked, so we can convert the minutes to decimal hours by using the minutesToHoursAndMinutes function.
+9. The minutesToHoursAndMinutes function will convert the minutes to hours and minutes and return a string in the format "HH:MM".
+10. Finally, we can convert the string "HH:MM" to decimal hours by using the hoursAndMinutesToDecimal function.
+11. The hoursAndMinutesToDecimal function will convert the string "HH:MM" into a decimal number and return a string in the format "HH.HH".
+12. We can now use the toFixed method to round the decimal number to 2 decimal places and return a string in the format "HH.HH".
+13. Finally, we can assign the result of the hoursAndMinutesToDecimal function to the value attribute of the totalWorkedHours input element. */
 function calculateTotalWorkedHours() {
     const allWorkedHours = document.querySelectorAll(".workedHours");
 
@@ -151,6 +190,13 @@ function calculateTotalWorkedHours() {
     document.getElementById("totalWorkedHours").value = totalDecimalHours.toFixed(2); // toFixed(2) will round it to 2 decimal places
 } // end of calculateTotalWorkedHours
 
+/* 
+1. First we need to get the hours and minutes from the total minutes.
+2. We will use the Math.floor() function to get the hours from the total minutes.
+3. We will use the % operator to get the remainder of the minutes after dividing by 60.
+4. We will use the ternary operator to check if the hours and minutes are below 10 then we will add
+a 0 in front of it.
+5. Finally we will return the result as a string. */
 function minutesToHoursAndMinutes(minutes) {
     const hours = Math.floor(minutes / 60);
     const mins = minutes % 60;
@@ -166,6 +212,10 @@ tableBodyTrs.forEach((tr) => {
     tr.appendChild(form);
 });
 
+/* 1. We get all the input elements by their id
+    2. We get their values, and conver them to numbers
+    3. We calculate the total pay
+    4. We round the total pay to 2 decimal places. */
 function calculateTotalPay() {
     const hourlyRateInput = document.getElementById('hourlyRate');
     const bonusInput = document.getElementById('bonus');
@@ -185,6 +235,13 @@ function calculateTotalPay() {
     totalPayInput.value = totalPay.toFixed(2);  // round to 2 decimal places
 } // end of calculateTotalPay function
 
+
+
+/* 1. The function named hoursAndMinutesToDecimal has one parameter named time. It is a string of the time in 24-hour format. 
+2. The function returns the hours and minutes converted into a decimal number. 
+3. The function begins by splitting the time string into an array of two strings using the split() method. The split() method takes a delimiter as an argument and returns an array of strings. 
+4. The delimiter is a colon character. The colon character is a special character in JavaScript. It is used in object literals, ternary operators, and ES6 destructuring. 
+*/ 
 function hoursAndMinutesToDecimal(time) {
     const [hours, minutes] = time.split(':').map(parseFloat);
     return hours + (minutes / 60.00);
