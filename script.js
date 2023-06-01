@@ -235,8 +235,6 @@ function calculateTotalPay() {
     totalPayInput.value = totalPay.toFixed(2);  // round to 2 decimal places
 } // end of calculateTotalPay function
 
-
-
 /* 1. The function named hoursAndMinutesToDecimal has one parameter named time. It is a string of the time in 24-hour format. 
 2. The function returns the hours and minutes converted into a decimal number. 
 3. The function begins by splitting the time string into an array of two strings using the split() method. The split() method takes a delimiter as an argument and returns an array of strings. 
