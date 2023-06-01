@@ -207,6 +207,7 @@ input {
 
 .special-date input {
     max-width: 225px;
+    margin: 0 auto;
 
 }
 
