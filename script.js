@@ -83,7 +83,10 @@ function handleFormChange(e) {
 } // end of handleFormChange function
 
 /* 
-1. Start and end work hour should not be empty. If one of them is empty, then a pop-up alert will be displayed. The alert will not be displayed if the user is inputting the hour. This is achieved by checking if the active element is input or not.
+1. Start and end work hour should not be empty. If one of them is empty, then a pop-up alert will be displayed. 
+The alert will not be displayed if the user 
+is inputting the hour. 
+This is achieved by checking if the active element is input or not.
 2. If the user has completed start and end work hour, then the function will return true.
 3. If the user has not completed start and end work hour, then the function will return false. */
 function validateSubmission(startWork, endWork) {
