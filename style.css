@@ -250,32 +250,3 @@ input {
     color: var(--yellow);
     padding: 33px;
 }
-
-@media (max-width: 768px) {
-
-    body {
-        font-size: 18px;
-    }
-
-    .sidebar {
-        position: relative;
-        height: auto;
-        left: 0;
-        width: 100%;
-    }
-
-    .sidebar-indicator {
-        display: none;
-    }
-
-    .person {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .hourly-rate, .-bonus, .-mileage, .date-input, .name-input, .special-date, .tableHead {
-        position: relative;
-        max-width: 100%;
-        font-size: 18px;
-    }
-}
