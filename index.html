@@ -10,26 +10,24 @@
     <title>Biweekly TimeSheet Calculator - DPC Event Services</title>
 </head>
 
-
 <body>
-    
-    <div class="date-input">
-        <label for="date"></label>
-        <input type="text" id="date" placeholder=" Enter date submitted:" />
-    </div>
-    <div class="name-input">
-        <label for="name"></label>
-        <input type="text" id="name" placeholder=" Enter your name:" />
-    </div>
-    <div class="special-date">
-        <label for="specDate"></label>
-        <input type="text" id="specDate" placeholder="Enter tech/event date:" />
-    </div> 
     
     <div class ="container">
         <header class="person">
             <div class="person-avatar"> 
             <h1 class="person_name"></h1>
+            <div class="date-input">
+                <label for="date"></label>
+                <input type="text" id="date" placeholder=" Enter date submitted:" />
+            </div>
+            <div class="name-input">
+                <label for="name"></label>
+                <input type="text" id="name" placeholder=" Enter your name:" />
+            </div>
+            <div class="special-date">
+                <label for="specDate"></label>
+                <input type="text" id="specDate" placeholder="Enter tech/event date:" />
+            </div> 
             <div class="hourly-rate">
                 <label for="hourlyRate"></label>
                 <input type="number" id="hourlyRate" placeholder="Enter your hourly rate:" />
@@ -41,12 +39,10 @@
             <div class="-mileage">
                 <label for="mileage"></label>
                 <input type="number" id="mileage" placeholder="Enter miles driven:" />
-            </div> 
+            </div>
         </header> 
 
         <div class="sidebar-indicator">➔</div> 
-
-
         <div class="sidebar">
             <button class="tab" onclick="openTab(event, 'tab1')">BIWEEKLY TIME SHEET</button>
             <button class="tab" onclick="openTab(event, 'tab2')">EMPLOYEE SCHEDULING </button>
@@ -59,7 +55,6 @@
             <input type="text" class="green" value="End Break" disabled/>
             <input type="text" class="blue" value="End Work" disabled/>
             <input type="text" class="purple" value="Hours / Min" disabled/>
-
         </section>
 
         <h2 class="week-heading">Week 1</h2>
@@ -82,8 +77,6 @@
             <div class="tr"></div>
         </section>
 
-        
-
         <section class="tableFooter">
             <input type="text" class="red purple" value="Total Pay" disabled />
             <input id="totalPay" class="red" value="0" disabled />
@@ -91,12 +84,7 @@
             <input type="text" class="red purple" value="Total Hours" disabled />
             <input id="totalWorkedHours" class="red" value="0" disabled />
         </section>
-
-
-        
     </div>
-  
-    
     <script src ="script.js"></script>
 </body>
 </html>

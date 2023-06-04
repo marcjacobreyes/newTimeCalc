@@ -59,17 +59,16 @@ body {
     margin: auto;
     margin-top: 40px;
     background-color: var(--light-green);
-    padding-top: 2rem;
+    padding-top: 1rem;
     padding-left: 8.5rem;
-    padding-bottom: 2rem;
+    padding-bottom: 1rem;
     border-radius: 1rem;
-    border: 1px solid rgba(0, 0, 0, 0.3);
+    border: 5px solid rgba(0, 0, 0, 0.3);
     box-shadow: 5px 5px 15px 3px rgba(0, 0, 0, 0.3);
 }
 
 /* This is where we can stylize and or switch out logo and background colors*/ 
 .person {
-    
     position: relative;
     top: -.50px;
     left: 345px;
@@ -87,12 +86,9 @@ body {
     background-repeat: no-repeat;
 }
 
-
-
 section.form {
-    display: flex; 
+    display: flex;
     gap: 10px;
-    padding: 0.50rem 0.90rem;
 }
 
 section.tableBody {
@@ -101,19 +97,24 @@ section.tableBody {
 }
 
 input {
-    max-width: 115px;
+    max-width: 120px;
     outline: none;
     border: none;
     border-radius: 45px;
-    height: 15px;
+    height: 17px;
     font-size: 1.09rem;
     font-weight: 500;
     padding: 0.50rem 0.90rem; 
     text-align: center;
+    justify-content: center;
+    align-items: center;
 }
 
-.tableHead input {
-    height: 35px;
+.tableHead {
+    display: flex;
+    justify-content: left;
+    max-width: 120px;
+    text-align: center;
 }
 
 .tableFooter {
@@ -129,7 +130,8 @@ input {
     margin-left: 30px;
     margin-bottom: 0.5rem;
     margin-top: 0.2rem;
-    font-family: "Lato", sans-serif;
+    font-family: "Poppins", sans-serif;
+    font-size: 1.5rem
 }
 
 /* This is where we can edit the application to the user and mgt needs bonus, etc*/
@@ -176,7 +178,7 @@ input {
 .date-input {
     position: absolute;
     right: 1130px;
-    top: 100px;
+    top: 35px;
     font-family: "Poppins", sans-serif;
     font-size: 15px;
 }
@@ -192,7 +194,7 @@ input {
 .name-input {
     position: absolute;
     right: 1130px;
-    top: 65px;
+    top: 0px;
     font-family: "Poppins" sans-serif;
     font-size: 15px;
 }
@@ -200,7 +202,7 @@ input {
 .special-date {
     position: absolute;
     right: 1130px;
-    top: 135px;
+    top: 70px;
     font-family: "Poppins", sans-serif;
     font-size: 15px;
 }
@@ -254,10 +256,6 @@ input {
     body {
         font-size: 18px;
     }
-    
-    form {
-        flex-direction: column;
-    }
 
     .sidebar {
         position: relative;
@@ -275,8 +273,9 @@ input {
         align-items: center;
     }
 
-    .hourly-rate, .-bonus, .-mileage, .date-input, .name-input, .special-date {
-        position: static;
+    .hourly-rate, .-bonus, .-mileage, .date-input, .name-input, .special-date, .tableHead {
+        position: relative;
         max-width: 100%;
+        font-size: 18px;
     }
 }
