@@ -239,6 +239,43 @@ function hoursAndMinutesToDecimal(time) {
     return hours + (minutes / 60.00);
 } // end of hoursAndMinutesToDecimal function
 
+// Download as PNG
+function downloadAsPNG() {
+    html2canvas(document.body).then(function(canvas) {
+        let imgData = canvas.toDataURL('image/png');
+        let a = document.createElement('a');
+        a.href = imgData;
+        a.download = 'snapshot.png';
+        a.click();
+    });
+}
+
+// Download as JPG
+function downloadAsJPG() {
+    html2canvas(document.body).then(function(canvas) {
+        let imgData = canvas.toDataURL('image/jpeg');
+        let a = document.createElement('a');
+        a.href = imgData;
+        a.download = 'snapshot.jpg';
+        a.click();
+    });
+}
+
+// Download as PDF
+function downloadAsPDF() {
+    html2canvas(document.body).then(function(canvas) {
+        let imgData = canvas.toDataURL('image/jpeg');
+        let doc = new jsPDF('p', 'mm');
+        doc.addImage(imgData, 'JPEG', 10, 10);
+        doc.save('snapshot.pdf');
+    });
+}
+
+/*// Attach event listeners
+document.getElementById('btnDownloadPNG').addEventListener('click', downloadAsPNG);
+document.getElementById('btnDownloadJPG').addEventListener('click', downloadAsJPG);
+document.getElementById('btnDownloadPDF').addEventListener('click', downloadAsPDF);
+*/
 const hourlyRateInput = document.getElementById('hourlyRate');
 const bonusInput = document.getElementById('bonus');
 const mileageInput = document.getElementById('mileage'); 
