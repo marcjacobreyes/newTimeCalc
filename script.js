@@ -149,15 +149,13 @@ function calcDailyWorkedHours(startWork, endWork, startBreak, endBreak) {
         diffFinal -= isNaN(diffBreak) ? 0 : diffBreak;
     }
 
-    let hours = Math.floor(diffFinal / 1000 / 60 / 60);
+    const hours = Math.floor(diffFinal / 1000 / 60 / 60);
     diffFinal -= hours * 1000 * 60 * 60;
     const minutes = Math.floor(diffFinal / 1000 / 60);
-  
-    const result = (hours < 10 ? "0" : "") + hours + ":" + (minutes < 10 ? "0" : "") + minutes;
-    
-    console.log('result:', result);
-    
-    return result;
+
+    const result = hours + minutes /60;
+
+    return result.toFixed(2);
 } // end of calculateDailyWorkedHours
 
 /* 
@@ -178,19 +176,12 @@ function calculateTotalWorkedHours() {
     const allWorkedHours = document.querySelectorAll(".workedHours");
 
     let arrayOfWorkedHours = Array.from(allWorkedHours);
-    let newWorkedHour = arrayOfWorkedHours.map((workedHour) => workedHour.value);
+    let newWorkedHour = arrayOfWorkedHours.map((workedHour) => parseFloat(workedHour.value));  // convert to decimal hour
 
-    let convertedHours = newWorkedHour.map(el => {
-        const [hours,minutes] = el.split(":");
-        return parseInt(hours) * 60 + parseInt(minutes);
-    });
+    // calculate the total hours worked
+    let calculateTotalHoursWorked = newWorkedHour.reduce((partialSum, a) => partialSum + a, 0);
 
-    let calculateTotalHoursWorked = convertedHours.reduce((partialSum, a) => parseInt(partialSum + a), 0);
-
-    // convert the total minutes to decimal hours
-    let totalDecimalHours = hoursAndMinutesToDecimal(minutesToHoursAndMinutes(calculateTotalHoursWorked));
-
-    document.getElementById("totalWorkedHours").value = totalDecimalHours.toFixed(2); // toFixed(2) will round it to 2 decimal places
+    document.getElementById("totalWorkedHours").value = calculateTotalHoursWorked.toFixed(2); // toFixed(2) will round it to 2 decimal places
 } // end of calculateTotalWorkedHours
 
 /* 
@@ -219,24 +210,24 @@ tableBodyTrs.forEach((tr) => {
     2. We get their values, and conver them to numbers
     3. We calculate the total pay
     4. We round the total pay to 2 decimal places. */
-function calculateTotalPay() {
-    const hourlyRateInput = document.getElementById('hourlyRate');
-    const bonusInput = document.getElementById('bonus');
-    const mileageInput = document.getElementById('mileage');
-    const totalWorkedHoursInput = document.getElementById('totalWorkedHours');
-    const totalPayInput = document.getElementById('totalPay');  // assume this is the id of your total pay input field
-
-    const hourlyRate = parseFloat(hourlyRateInput.value) || 0;
-    const bonus = parseFloat(bonusInput.value) || 0;
-    const mileage = parseFloat(mileageInput.value) || 0;
-    const totalWorkedHours = parseFloat(totalWorkedHoursInput.value) || 0;
-
-    const costPerMile = 0.51; // adjust this to your needs
-
-    const totalPay = (hourlyRate * totalWorkedHours) + bonus + (mileage * costPerMile);
-
-    totalPayInput.value = totalPay.toFixed(2);  // round to 2 decimal places
-} // end of calculateTotalPay function
+    function calculateTotalPay() {
+        const hourlyRateInput = document.getElementById('hourlyRate');
+        const bonusInput = document.getElementById('bonus');
+        const mileageInput = document.getElementById('mileage');
+        const totalWorkedHoursInput = document.getElementById('totalWorkedHours');
+        const totalPayInput = document.getElementById('totalPay');  // assume this is the id of your total pay input field
+    
+        const hourlyRate = parseFloat(hourlyRateInput.value) || 0;
+        const bonus = parseFloat(bonusInput.value) || 0;
+        const mileage = parseFloat(mileageInput.value) || 0;
+        const totalWorkedHours = parseFloat(totalWorkedHoursInput.value) || 0;  // make sure this is in decimal hours
+    
+        const costPerMile = 0.51; // adjust this to your needs
+    
+        const totalPay = (hourlyRate * totalWorkedHours) + bonus + (mileage * costPerMile);
+    
+        totalPayInput.value = totalPay.toFixed(2);  // round to 2 decimal places
+    } // end of calculateTotalPay function
 
 /* 1. The function named hoursAndMinutesToDecimal has one parameter named time. It is a string of the time in 24-hour format. 
 2. The function returns the hours and minutes converted into a decimal number. 
