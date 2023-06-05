@@ -35,7 +35,7 @@ function createForm() {
             <input type="time" class="blue end-work" />
         </td>
         <td>
-            <input class="workedHours purple" value="00:00" disabled />
+            <input class="workedHours purple" value="00.00" disabled />
         </td>
     `;
 
