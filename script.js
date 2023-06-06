@@ -182,6 +182,7 @@ function calculateTotalWorkedHours() {
     let calculateTotalHoursWorked = newWorkedHour.reduce((partialSum, a) => partialSum + a, 0);
 
     document.getElementById("totalWorkedHours").value = calculateTotalHoursWorked.toFixed(2); // toFixed(2) will round it to 2 decimal places
+    calculateTotalPay();
 } // end of calculateTotalWorkedHours
 
 /* 
@@ -215,7 +216,7 @@ tableBodyTrs.forEach((tr) => {
         const bonusInput = document.getElementById('bonus');
         const mileageInput = document.getElementById('mileage');
         const totalWorkedHoursInput = document.getElementById('totalWorkedHours');
-        const totalPayInput = document.getElementById('totalPay');  // assume this is the id of your total pay input field
+        const totalPayInput = document.getElementById('totalPay'); // assume this is the id of your total pay input field
     
         const hourlyRate = parseFloat(hourlyRateInput.value) || 0;
         const bonus = parseFloat(bonusInput.value) || 0;
@@ -225,8 +226,7 @@ tableBodyTrs.forEach((tr) => {
         const costPerMile = 0.51; // adjust this to your needs
     
         const totalPay = (hourlyRate * totalWorkedHours) + bonus + (mileage * costPerMile);
-    
-        totalPayInput.value = totalPay.toFixed(2);  // round to 2 decimal places
+        totalPayInput.value = totalPay.toFixed(2); // round to 2 decimal places
     } // end of calculateTotalPay function
 
 /* 1. The function named hoursAndMinutesToDecimal has one parameter named time. It is a string of the time in 24-hour format. 
@@ -239,7 +239,7 @@ function hoursAndMinutesToDecimal(time) {
     return hours + (minutes / 60.00);
 } // end of hoursAndMinutesToDecimal function
 
-// Download as PNG
+/*// Download as PNG
 function downloadAsPNG() {
     html2canvas(document.body).then(function(canvas) {
         let imgData = canvas.toDataURL('image/png');
@@ -269,19 +269,15 @@ function downloadAsPDF() {
         doc.addImage(imgData, 'JPEG', 10, 10);
         doc.save('snapshot.pdf');
     });
-}
+}*/
 
-/*// Attach event listeners
-document.getElementById('btnDownloadPNG').addEventListener('click', downloadAsPNG);
-document.getElementById('btnDownloadJPG').addEventListener('click', downloadAsJPG);
-document.getElementById('btnDownloadPDF').addEventListener('click', downloadAsPDF);
-*/
 const hourlyRateInput = document.getElementById('hourlyRate');
 const bonusInput = document.getElementById('bonus');
 const mileageInput = document.getElementById('mileage'); 
 // lets the user input hourly wage, any bonuses, and mileage driven. 
 
-hourlyRateInput.addEventListener('change', calculateTotalPay);
-bonusInput.addEventListener('change', calculateTotalPay);
-mileageInput.addEventListener('change', calculateTotalPay);
+document.getElementById('hourlyRate').addEventListener('change', calculateTotalPay);
+document.getElementById('bonus').addEventListener('change', calculateTotalPay);
+document.getElementById('mileage').addEventListener('change', calculateTotalPay);
+
 // allows for change event listeners on each of these inputs hourly wage, bonus, mileage and calculates the Total Pay for the biweekly period.
