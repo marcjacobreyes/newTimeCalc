@@ -214,42 +214,7 @@ input {
 }
 
 /* This is where we can edit the side bar needs and stylization*/ 
-.sidebar {
-    position: fixed;
-    width: 200px;
-    height: 100%;
-    left: -220px;
-    top: 0;
-    background-color: var(--light-green);
-    overflow: auto;
-    padding: 20px;
-    transition: 0.5s;
-}
 
-.sidebar:hover {
-    left: 0;
-}
-
-.tab {
-    background-color: var(--light-green);
-    border: solid;
-    outline: none;
-    cursor: pointer;
-    padding: 10px 20px;
-    transition: 0.3s;
-    font-size: 17px;
-    display: flex;
-    margin-bottom: 10px;
-}
-
-.sidebar-indicator {
-    position: fixed;
-    left: 0;
-    top: 50%;
-    background-color: var(--light-green);
-    color: var(--yellow);
-    padding: 33px;
-}
 
 .tableBody:hover {
     transform: scale(1.01);
