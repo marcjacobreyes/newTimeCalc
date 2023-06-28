@@ -280,7 +280,7 @@ html {
 .wrapper .sidebar ul li a.active{
     color: var(--dark-green);
     background: white;
-    border-right: 2px solid var(--light-blue);
+    border-right: 2px solid black;
 }
 
 .wrapper .sidebar ul li a:hover .icon,
