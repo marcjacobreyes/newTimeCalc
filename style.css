@@ -57,7 +57,7 @@ body {
     max-width: 1000px; 
     position: -webkit-sticky;
     margin: auto;
-    margin-top: 40px;
+    margin-top: 10px;
     background-color: var(--light-green);
     padding-top: 1rem;
     padding-left: 8.5rem;
@@ -243,7 +243,7 @@ html {
     width: 225px;
     height: 100%;
     padding: 20px 0;
-    transition: all 0.5s ease;
+    transition: all 0.5s ease-in-out;
 }
 
 .wrapper .sidebar .profile {
@@ -292,6 +292,44 @@ html {
 .wrapper .sidebar ul li a:hover::before{
     display: block;
 }
+
+.wrapper .section {
+    width: calc(100% - 225px);
+    margin-left: 225px;
+    transition: all 0.5s ease-in-out 0s;
+
+}
+
+.wrapper .section .top_navbar { 
+    background-color: var(--light-green);
+    height: 40px;
+    display: flex;
+    align-items: center;
+    padding: 0 40px;
+    width: 100%;
+}
+
+.wrapper .section .top_navbar .hambburger a{
+    font-size: 28px;
+    color: var(--dark-green);
+}
+
+.wrapper .section .top_navbar .hamburger a:hover{
+    color: var(--dark-green);
+}
+
+body.active .wrapper .sidebar {
+    Left: -225px;
+}
+
+body.active .wrapper .section {
+    margin-left: 0%;
+    width: auto;
+}
+
+
+
+
 
 
 

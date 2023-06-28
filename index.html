@@ -30,17 +30,26 @@
                 </a></li>
                 <li><a href="#">
                     <span class="icon"><i class="fa-sharp fa-solid fa-truck-fast"></i></span>
-                    <span class="item"> Bi-Weekly Time Tracker </span>
+                    <span class="item"> BIWEEKLY TIME TRACKER </span>
                 </a></li>
                 <li><a href="#">
                     <span class="icon"><i class="fa-sharp fa-solid fa-calendar-days"></i></span>
-                    <span class="item"> Employee Scheduling </span>
+                    <span class="item"> EMPLOYEE SCHEDULING </span>
                 </a></li>
                 <li><a href="#">
                     <span class="icon"><i class="fas fa-database"></i></span>
-                    <span class="item"> To-Do List </span>
+                    <span class="item"> TO-DO LIST</span>
                 </a></li>
             </ul>
+        </div>
+        <!-- top menu bar-->
+        <div class="section">
+            <div class="top_navbar">
+                <div class="hamburger">
+                    <a href="#"><i class="fa-sharp fa-solid fa-bars"></i></a>
+
+                </div>
+            </div>
         </div>
     </div> <!-- end of wrapper div -->
 
@@ -112,6 +121,12 @@
             <input id="totalWorkedHours" class="red" value="0" disabled />
         </section> <!-- end of tableFooter-->
     </div>
+    <script>
+        var hambuger = document.querySelector(".hamburger");
+        hambuger.addEventListener("click", function(){
+            document.querySelector("body").classList.toggle("active")
+        })
+    </script>
     <script src ="script.js"></script>
     <script src ="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
     <script src ="https://cdnjs.cloudflare.com/ajax/libs/japdf/1.0.272/jspdf.debug.js"></script>
