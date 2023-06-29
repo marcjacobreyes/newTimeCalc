@@ -57,7 +57,7 @@ body {
     max-width: 1000px; 
     position: -webkit-sticky;
     margin: auto;
-    margin-top: 10px;
+    margin-top: 20px;
     background-color: var(--light-green);
     padding-top: 1rem;
     padding-left: 8.5rem;
@@ -240,7 +240,7 @@ html {
     position: fixed;
     top: 0;
     Left: 0;
-    width: 225px;
+    width: 220px;
     height: 100%;
     padding: 20px 0;
     transition: all 0.5s ease-in-out;
@@ -325,6 +325,31 @@ body.active .wrapper .sidebar {
 body.active .wrapper .section {
     margin-left: 0%;
     width: auto;
+}
+
+@media screen and (max-width: 1200px) {
+    .container{
+        width: 95%;
+        grid-template-columns: 7rem
+        auto 23rem;
+    }
+
+    aside .logo {
+        display: none;
+    }
+
+    aside .sidebar h3{
+        display: none;
+    }
+
+    aside .sidebar a{
+        width: 5.6rem;
+    }
+
+    aside .sidebar a:last-child{
+        position: relative;
+        margin-top: 1.8rem;
+    }
 }
 
 
