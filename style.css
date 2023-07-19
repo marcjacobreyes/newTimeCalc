@@ -357,55 +357,69 @@ body.active .wrapper .section {
 /* Add media query for screen widths up to 768px */
 @media only screen and (max-width: 768px) {
     .container {
-        padding-left: 1.5rem;
-        padding-right: 1.5rem;
+        width: 95%;
+        padding-left: 1rem;
+        padding-right: 1rem;
     }
-    
+
     .person-avatar {
         height: 100px;
         width: 120px;
     }
-    
+
     .person {
         flex-direction: column;
         align-items: center;
     }
-    
+
     .person h1 {
-        margin-top: 10px;
         font-size: 1rem;
     }
-    
-    .hourly-rate, .-bonus, .-mileage, .date-input, .name-input, .special-date {
-        position: static;
+
+    .hourly-rate,
+    .-bonus,
+    .-mileage,
+    .date-input,
+    .name-input,
+    .special-date {
         margin-top: 10px;
+        position: static;
         right: auto;
     }
-    
-    .hourly-rate input, .-bonus input, .-mileage input, .date-input input, .name-input input, .special-date input {
+
+    .hourly-rate input,
+    .-bonus input,
+    .-mileage input,
+    .date-input input,
+    .name-input input,
+    .special-date input {
         max-width: 100%;
     }
-    
-    .tableHead, .tableBody, .tableFooter {
+
+    .tableHead,
+    .tableBody,
+    .tableFooter {
         flex-direction: column;
         align-items: center;
     }
-    
-    .tableHead input, .tableBody div, .tableFooter input {
+
+    .tableHead input,
+    .tableBody div,
+    .tableFooter input {
         width: auto;
         max-width: none;
-        text-align: left;
+        text-align: center;
     }
-    
+
     .tableFooter {
         flex-direction: column;
     }
-    
+
     .tableFooter #totalWorkedHours {
         margin-right: 0;
         margin-top: 1rem;
     }
-    
+
     .week-heading {
         text-align: center;
     }
@@ -414,32 +428,49 @@ body.active .wrapper .section {
 /* Add media query for screen widths up to 480px (smartphones) */
 @media only screen and (max-width: 480px) {
     .container {
-        padding-left: 1rem;
-        padding-right: 1rem;
+        width: 90%;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
     }
-    
+
     .person-avatar {
         height: 80px;
         width: 100px;
     }
-    
+
     .person h1 {
         font-size: 0.9rem;
     }
-    
+
     .person {
         flex-direction: column;
         align-items: center;
     }
-    
-    .hourly-rate, .-bonus, .-mileage, .date-input, .name-input, .special-date {
+
+    .hourly-rate,
+    .-bonus,
+    .-mileage,
+    .date-input,
+    .name-input,
+    .special-date {
         margin-top: 5px;
     }
-    
-    .tableHead input, .tableBody div, .tableFooter input {
+
+    .hourly-rate input,
+    .-bonus input,
+    .-mileage input,
+    .date-input input,
+    .name-input input,
+    .special-date input {
+        max-width: 100%;
+    }
+
+    .tableHead input,
+    .tableBody div,
+    .tableFooter input {
         font-size: 0.9rem;
     }
-    
+
     .week-heading {
         font-size: 1.2rem;
     }
