@@ -214,10 +214,6 @@ input {
 }
 
 /* This is where we can edit the side bar needs and stylization*/ 
-.tableBody:hover {
-    transform: scale(1.01);
-    transition: transform 0.6s ease-in-out;
-}
 
 html {
     overflow-y: scroll;
@@ -327,44 +323,13 @@ body.active .wrapper .section {
     width: auto;
 }
 
-@media screen and (max-width: 1200px) {
-    .container{
-        width: 95%;
-        grid-template-columns: 7rem
-        auto 23rem;
-    }
 
-    aside .logo {
-        display: none;
-    }
-
-    aside .sidebar h3{
-        display: none;
-    }
-
-    aside .sidebar a{
-        width: 5.6rem;
-    }
-
-    aside .sidebar a:last-child{
-        position: relative;
-        margin-top: 1.8rem;
-    }
-}
-
-/* Your existing CSS rules */
 
 /* Add media query for screen widths up to 768px */
 @media only screen and (max-width: 768px) {
-    .container {
-        width: 95%;
-        padding-left: 1rem;
-        padding-right: 1rem;
-    }
-
     .person-avatar {
-        height: 100px;
-        width: 120px;
+        height: 80px;
+        width: 100px;
     }
 
     .person {
@@ -373,7 +338,8 @@ body.active .wrapper .section {
     }
 
     .person h1 {
-        font-size: 1rem;
+        font-size: 0.9rem;
+        margin-top: 5px;
     }
 
     .hourly-rate,
@@ -382,9 +348,7 @@ body.active .wrapper .section {
     .date-input,
     .name-input,
     .special-date {
-        margin-top: 10px;
-        position: static;
-        right: auto;
+        margin-top: 5px;
     }
 
     .hourly-rate input,
@@ -406,22 +370,11 @@ body.active .wrapper .section {
     .tableHead input,
     .tableBody div,
     .tableFooter input {
-        width: auto;
-        max-width: none;
-        text-align: center;
-    }
-
-    .tableFooter {
-        flex-direction: column;
-    }
-
-    .tableFooter #totalWorkedHours {
-        margin-right: 0;
-        margin-top: 1rem;
+        font-size: 0.9rem;
     }
 
     .week-heading {
-        text-align: center;
+        font-size: 1.2rem;
     }
 }
 
@@ -433,18 +386,9 @@ body.active .wrapper .section {
         padding-right: 0.5rem;
     }
 
-    .person-avatar {
-        height: 80px;
-        width: 100px;
-    }
-
     .person h1 {
-        font-size: 0.9rem;
-    }
-
-    .person {
-        flex-direction: column;
-        align-items: center;
+        font-size: 0.8rem;
+        margin-top: 3px;
     }
 
     .hourly-rate,
@@ -453,7 +397,7 @@ body.active .wrapper .section {
     .date-input,
     .name-input,
     .special-date {
-        margin-top: 5px;
+        margin-top: 3px;
     }
 
     .hourly-rate input,
@@ -462,17 +406,58 @@ body.active .wrapper .section {
     .date-input input,
     .name-input input,
     .special-date input {
-        max-width: 100%;
+        font-size: 0.8rem;
     }
 
     .tableHead input,
     .tableBody div,
     .tableFooter input {
-        font-size: 0.9rem;
+        font-size: 0.8rem;
     }
 
     .week-heading {
-        font-size: 1.2rem;
+        font-size: 1rem;
+    }
+}
+
+@media only screen and (max-width: 390px) {
+    .container {
+        width: 90%;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+
+    .person h1 {
+        font-size: 0.8rem;
+        margin-top: 3px;
+    }
+
+    .hourly-rate,
+    .-bonus,
+    .-mileage,
+    .date-input,
+    .name-input,
+    .special-date {
+        margin-top: 3px;
+    }
+
+    .hourly-rate input,
+    .-bonus input,
+    .-mileage input,
+    .date-input input,
+    .name-input input,
+    .special-date input {
+        font-size: 0.8rem;
+    }
+
+    .tableHead input,
+    .tableBody div,
+    .tableFooter input {
+        font-size: 0.8rem;
+    }
+
+    .week-heading {
+        font-size: 1rem;
     }
 }
 
