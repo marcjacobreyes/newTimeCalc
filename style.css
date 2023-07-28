@@ -59,11 +59,15 @@ body {
     left: 0;
     background: var(--light-green);
     width: 230px;
-    height: 100%;
+    height: 50%;
     z-index: 2000;
     overflow-x: hidden;
     scrollbar-width: none;
     transition: all 0.3s ease;
+    border-radius: 40px 40px 40px 40px;
+    border: 5px solid rgba(0, 0, 0, 0.3);
+    margin-left: 20px;
+    margin-top: 35px;
 }
 
 .sidebar::webkit-scrollbar {
@@ -174,13 +178,13 @@ body {
 
 .container {
     width: 90%;
+    height: 90%;
     max-width: 1000px; 
     position: -webkit-sticky;
     margin: auto;
     margin-top: 35px;
-    margin-right: 155px;
+    margin-right: 185px;
     margin-bottom: 10px;
-    
     background-color: var(--light-green);
     padding-top: 1rem;
     padding-left: 8.5rem;
