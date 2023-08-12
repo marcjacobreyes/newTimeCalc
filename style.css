@@ -59,7 +59,7 @@ body {
     left: 0;
     background: var(--light-green);
     width: 230px;
-    height: 50%;
+    height: 70%;
     z-index: 2000;
     overflow-x: hidden;
     scrollbar-width: none;
