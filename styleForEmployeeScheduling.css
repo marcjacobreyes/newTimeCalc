@@ -52,9 +52,17 @@ body {
     padding: 5px;
     color: #fff;
     display: flex;
-  
     border-radius: 10px;
     background-color: var(--yellow);
+}
+
+.logo {
+    position: absolute;
+    width: 100%;
+    height: auto;
+    max-width: 100px;
+    max-height: 100px;
+    padding-left: 1200px;
 }
 
 .left {
@@ -293,7 +301,7 @@ body {
 }
 .right .today-date .event-date {
     font-size: 1rem;
-    font-weight: 400;
+    font-weight: 500;
     color: #878895;
 }
 .events {
@@ -317,15 +325,16 @@ body {
     padding: 0 20px;
     padding-left: 50px;
     color: #fff;
-    background: linear-gradient(90deg, #3f4458, transparent);
+    background: linear-gradient(90deg, var(--dark-green), transparent);
     cursor: pointer;
+
 }
   /* even event */
 .events .event:nth-child(even) {
     background: transparent;
 }
 .events .event:hover {
-    background: linear-gradient(90deg, var(--primary-clr), transparent);
+    background: linear-gradient(90deg, var(--bright-yellow), transparent);
 }
 .events .event .title {
     display: flex;
@@ -336,6 +345,7 @@ body {
     font-size: 1rem;
     font-weight: 400;
     margin-left: 20px;
+    text-decoration: underline;
 }
 .events .event i {
     color: var(--yellow);
@@ -347,7 +357,7 @@ body {
 .events .event .event-time {
     font-size: 0.8rem;
     font-weight: 400;
-    color: #878895;
+    color: white;
     margin-left: 15px;
     pointer-events: none;
 }
@@ -366,7 +376,7 @@ body {
     align-items: center;
     justify-content: center;
     opacity: 0.3;
-    color: var(--yellow);
+    color: var(--bright-yellow);
     transform: translateY(-50%);
 }
   .events .event:hover::after {

@@ -15,6 +15,7 @@ const calendar = document.querySelector(".calendar"),
   addEventTitle = document.querySelector(".event-name "),
   addEventFrom = document.querySelector(".event-time-from "),
   addEventTo = document.querySelector(".event-time-to "),
+  addWorkingNames = document.querySelector(".working-names");
   addEventSubmit = document.querySelector(".add-event-btn ");
 
 let today = new Date();
@@ -36,24 +37,6 @@ const months = [
   "November",
   "December",
 ];
-
-// const eventsArr = [
-//   {
-//     day: 13,
-//     month: 11,
-//     year: 2022,
-//     events: [
-//       {
-//         title: "Event 1 lorem ipsun dolar sit genfa tersd dsad ",
-//         time: "10:00 AM",
-//       },
-//       {
-//         title: "Event 2",
-//         time: "11:00 AM",
-//       },
-//     ],
-//   },
-// ];
 
 const eventsArr = [];
 getEvents();
@@ -246,14 +229,17 @@ function updateEvents(date) {
       month + 1 === event.month &&
       year === event.year
     ) {
-      event.events.forEach((event) => {
+      event.events.forEach((eventObj) => {
         events += `<div class="event">
             <div class="title">
               <i class="fas fa-circle"></i>
-              <h3 class="event-title">${event.title}</h3>
+              <h3 class="event-title">${eventObj.title}</h3>
             </div>
             <div class="event-time">
-              <span class="event-time">${event.time}</span>
+              <span class="event-time">${eventObj.time}</span>
+            </div>
+            <div class="working-names">
+              <span class="working-names">${eventObj.workingnames}</span>
             </div>
         </div>`;
       });
@@ -267,6 +253,7 @@ function updateEvents(date) {
   eventsContainer.innerHTML = events;
   saveEvents();
 }
+
 
 //function to add event
 addEventBtn.addEventListener("click", () => {
@@ -288,33 +275,61 @@ addEventTitle.addEventListener("input", (e) => {
   addEventTitle.value = addEventTitle.value.slice(0, 60);
 });
 
-//allow only time in eventtime from and to
+// Event listener for addEventFrom
 addEventFrom.addEventListener("input", (e) => {
-  addEventFrom.value = addEventFrom.value.replace(/[^0-9:]/g, "");
-  if (addEventFrom.value.length === 2) {
-    addEventFrom.value += ":";
-  }
-  if (addEventFrom.value.length > 5) {
-    addEventFrom.value = addEventFrom.value.slice(0, 5);
-  }
+  const inputValue = e.target.value;
+  const formattedValue = formatTimeInput();
+  e.target.value = formattedValue;
 });
 
+// Event listener for addEventTo
 addEventTo.addEventListener("input", (e) => {
-  addEventTo.value = addEventTo.value.replace(/[^0-9:]/g, "");
-  if (addEventTo.value.length === 2) {
-    addEventTo.value += ":";
+  const eventTitle = addEventTitle.value;
+  const eventTimeFrom = addEventFrom.value;
+  const eventTimeTo = addEventTo.value;
+
+  // Validate event title, start time, and end time
+  if (eventTitle === "" || !isValidTime(eventTimeFrom) || !isValidTime(eventTimeTo)) {
+    alert("Please fill all the fields with valid values.");
+    return;
   }
-  if (addEventTo.value.length > 5) {
-    addEventTo.value = addEventTo.value.slice(0, 5);
-  }
+  const inputValue = e.target.value;
+  const formattedValue = formatTimeInput();
+  e.target.value = formattedValue;
 });
+
+// function to format time input
+function formatTimeInput(inputValue) { 
+  // Use a regular expression to validate and format the input
+  const timePattern = /^(1[0-2]|0?[1-9]):[0-5][0-9] [APap][mM]?$/;
+  if (timePattern.test(inputValue)) {
+    // If the input matches the pattern, return it as is
+    return inputValue;
+  } else {
+    // If not, try to extract valid time components (hh, mm, AM/PM)
+    const parts = inputValue.match(/(\d+):(\d+)\s*([APap][mM]?)/);
+    if (parts) {
+      const hours = parseInt(parts[1]);
+      const minutes = parseInt(parts[2]);
+      const period = parts[3].toLowerCase();
+      // Ensure hours are in 1-12 range and minutes are in 00-59 range
+      if (hours >= 1 && hours <= 12 && minutes >= 0 && minutes <= 59) {
+        // Format the time as "hh:mm AM/PM"
+        return `${hours}:${minutes < 10 ? "0" : ""}${minutes} ${period.toUpperCase()}`;
+      }
+    }
+    // If the input is not valid, return an empty string or the previous value
+    return "";
+  }
+}
 
 //function to add event to eventsArr
 addEventSubmit.addEventListener("click", () => {
   const eventTitle = addEventTitle.value;
   const eventTimeFrom = addEventFrom.value;
   const eventTimeTo = addEventTo.value;
-  if (eventTitle === "" || eventTimeFrom === "" || eventTimeTo === "") {
+  const eventWorkingNames = addWorkingNames.value;
+  if (eventTitle === "" || eventTimeFrom === "" || eventTimeTo === "" || eventWorkingNames === "") {
     alert("Please fill all the fields");
     return;
   }
@@ -356,10 +371,13 @@ addEventSubmit.addEventListener("click", () => {
     alert("Event already added");
     return;
   }
+
   const newEvent = {
     title: eventTitle,
     time: timeFrom + " - " + timeTo,
+    workingnames: eventWorkingNames,
   };
+
   console.log(newEvent);
   console.log(activeDay);
   let eventAdded = false;
@@ -389,7 +407,7 @@ addEventSubmit.addEventListener("click", () => {
   addEventWrapper.classList.remove("active");
   addEventTitle.value = "";
   addEventFrom.value = "";
-  addEventTo.value = "";
+  addWorkingNames.value = "";
   updateEvents(activeDay);
   //select active day and add event class if not added
   const activeDayEl = document.querySelector(".day.active");
@@ -445,12 +463,12 @@ function getEvents() {
 }
 
 function convertTime(time) {
-  //convert time to 24 hour format
-  let timeArr = time.split(":");
-  let timeHour = timeArr[0];
-  let timeMin = timeArr[1];
-  let timeFormat = timeHour >= 12 ? "PM" : "AM";
-  timeHour = timeHour % 12 || 12;
-  time = timeHour + ":" + timeMin + " " + timeFormat;
+  // //convert time to 24 hour format
+  // let timeArr = time.split(":");
+  // let timeHour = timeArr[0];
+  // let timeMin = timeArr[1];
+  // let timeFormat = timeHour >= 12 ? "PM" : "AM";
+  // timeHour = timeHour % 12 || 12;
+  // time = timeHour + ":" + timeMin + " " + timeFormat;
   return time;
 }
