@@ -1,0 +1,590 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap');
+
+*{
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0; 
+}
+
+:root {
+    --dark-green: #268b2c;
+    --light-green: #effbf0;
+    --dark-purple: #6a52ff;
+    --light-purple: #f3f1ff; 
+    --dark-orange: #d2781a;
+    --light-orange: #fdf3eb;
+    --dark-blue: #2998ff;
+    --light-blue: #f0f7ff;
+    --dark-red: #cf2e2e;
+    --light-red: #ffe5e5;
+    --dark-gray: #bebebe;
+    --light-gray: #f1f1f1;
+    --yellow: #27292A;
+    --bright-yellow: #F9DC5C;
+}
+
+.blue {
+    background-color: var(--light-blue);
+    color: var(--dark-blue);
+}
+
+.green {
+    background-color: var(--light-green);
+    color: var(--dark-green);
+}
+
+.purple {
+    background-color: var(--light-purple);
+    color: var(--dark-purple);
+}
+
+.orange {
+    background-color: var(--light-orange);
+    color: var(--dark-orange);
+}
+
+.red {
+    background-color: var(--light-red);
+    color: var(--dark-red);
+}
+
+body {
+    background-color: var(--yellow);
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: var(--light-green);
+    width: 230px;
+    height: 70%;
+    z-index: 2000;
+    overflow-x: hidden;
+    scrollbar-width: none;
+    transition: all 0.3s ease;
+    border-radius: 40px 40px 40px 40px;
+    border: 5px solid rgba(0, 0, 0, 0.3);
+    margin-left: 20px;
+    margin-top: 35px;
+}
+
+.sidebar::webkit-scrollbar {
+    display: none;
+}
+
+.sidebar.close {
+    width: 60px;
+}
+
+.sidebar .logo {
+    font-size: 24px;
+    font-weight: 600;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--yellow);
+    z-index: 500;
+    padding-bottom: 20px;
+    box-sizing: content-box;
+    text-decoration: none;
+}
+
+.sidebar .logo .logo-name span {
+    color: var(--dark-green);
+    text-decoration: none;
+}
+
+.sidebar .side-menu {
+    width: 100%;
+    margin-top: 48px;
+    text-decoration: none;
+}
+
+.sidebar .side-menu li {
+    height: 48px;
+    background: transparent;
+    margin-left: 6px;
+    border-radius: 48px 0 0 48px;
+    padding: 4px;
+    text-decoration: none;
+}
+
+.sidebar .side-menu li.active {
+    background: var(--bright-yellow);
+    position: relative;
+}
+
+.sidebar .side-menu li.active::before{
+    content: "";
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    top: -40px;
+    right: 0;
+    box-shadow: 20px 20px 0 var(--bright-yellow);
+    z-index: -1;
+}
+
+.sidebar .side-menu li.active::after {
+    content: "";
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    bottom: -40px;
+    right: 0;
+    box-shadow: 20px -20px 0 var(--bright-yellow);
+    z-index: -1;
+}
+
+.sidebar .side-menu li a {
+    width: 100%;
+    height: 100%;
+    background: white;
+    display: flex;
+    align-items: center;
+    border-radius: 48px;
+    font-size: 16px;
+    color: var(--dark-green);
+    white-space: nowrap;
+    overflow-x: hidden;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.sidebar .side-menu li.active a {
+    color: black;
+}
+
+.sidebar.close .side-menu li a {
+    width: calc(48px - (4px * 2));
+    transition: all 0.3s ease;
+}
+
+.sidebar .side-menu li a .bx {
+    min-width: calc(60px - ((4px + 6px) * 2));
+    display: flex;
+    font-size: 1.6rem;
+    justify-content: center;
+}
+
+.sidebar .side-menu li a.logout {
+    color: var(--dark-red);
+}
+
+.container {
+    width: 90%;
+    height: 90%;
+    max-width: 1000px; 
+    position: -webkit-sticky;
+    margin: auto;
+    margin-top: 35px;
+    margin-right: 90px;
+    margin-bottom: 10px;
+    background-color: var(--light-green);
+    padding-top: 1rem;
+    padding-left: 8.5rem;
+    padding-bottom: 1rem;
+    border-radius: 1rem;
+    border: 5px solid rgba(0, 0, 0, 0.3);
+    box-shadow: 5px 5px 15px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* This is where we can stylize and or switch out logo and background colors*/ 
+.person {
+    position: relative;
+    top: -.50px;
+    left: 345px;
+    display: flex; 
+    align-items: flex;
+}
+
+.person-avatar {
+    height: 130px;
+    width: 170px;
+    border-radius: 30px;
+    background-color: var(--yellow);
+    background: url(logo-no-background.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+section.form {
+    display: flex;
+    gap: 10px;
+}
+
+section.tableBody {
+    margin-top: 1px;
+    flex-direction: column;
+}
+
+input {
+    max-width: 120px;
+    outline: none;
+    border: none;
+    border-radius: 45px;
+    height: 17px;
+    font-size: 1.09rem;
+    font-weight: 500;
+    padding: 0.50rem 0.90rem; 
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.tableHead {
+    display: flex;
+    justify-content: left;
+    max-width: 120px;
+    text-align: center;
+}
+
+.tableFooter {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.tableFooter #totalWorkedHours {
+    margin-right: 125px;
+}
+.week-heading {
+    margin-left: 30px;
+    margin-bottom: 0.5rem;
+    margin-top: 0.2rem;
+    font-family: "Poppins", sans-serif;
+    font-size: 1.5rem
+}
+
+/* This is where we can edit the application to the user and mgt needs bonus, etc*/
+.hourly-rate {
+    position: absolute;
+    right: 470px;
+    font-family: "Poppins", sans-serif;
+    font-size: 15px;
+}
+
+.hourly-rate::placeholder {
+    font-size: 15px;
+    font-family: "Poppins", sans-serif;
+}
+
+.-bonus {
+    position: absolute;
+    right: 470px;
+    top: 35px;
+    font-family: "Poppins", sans-serif;
+    font-size: 15px;
+}
+
+.hourly-rate input {
+    max-width: 210px;
+}
+
+.-bonus input {
+    max-width: 210px;
+}
+
+.-mileage {
+    position: absolute;
+    right: 470px;
+    top: 70px;
+    font-family: "Poppins", sans-serif;
+    font-size: 15px;
+}
+
+.-mileage input {
+    max-width: 210px;
+}
+
+.date-input {
+    position: absolute;
+    right: 1130px;
+    top: 35px;
+    font-family: "Poppins", sans-serif;
+    font-size: 15px;
+}
+
+.date-input input {
+    max-width: 210px;
+}
+
+.name-input input {
+    max-width: 210px;
+}
+
+.name-input {
+    position: absolute;
+    right: 1130px;
+    top: 0px;
+    font-family: "Poppins" sans-serif;
+    font-size: 15px;
+}
+
+.special-date {
+    position: absolute;
+    right: 1130px;
+    top: 70px;
+    font-family: "Poppins", sans-serif;
+    font-size: 15px;
+}
+
+.special-date input {
+    max-width: 225px;
+    margin: 0 auto;
+
+}
+
+/* This is where we can edit the side bar needs and stylization*/ 
+
+html {
+    overflow-y: scroll;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+.content-wrapper {
+    position: fixed;
+    left: 0;
+    width: 250px;
+    height: 100%;
+    background-color: var(--light-green);
+}
+
+.wrapper .sidebar {
+    background: var(--light-green);
+    position: fixed;
+    top: 0;
+    Left: 0;
+    width: 220px;
+    height: 100%;
+    padding: 20px 0;
+    transition: all 0.5s ease-in-out;
+}
+
+.wrapper .sidebar .profile {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.wrapper .sidebar .profile img{
+    display: block;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin: 0 auto;
+}
+
+.wrapper .sidebar ul li a {
+    display: block;
+    padding: 13px 30px;
+    border-bottom: 1px solid var(--dark-green);
+    color: black;
+    font-size: 20px;
+    position: relative;
+    font-family: "Poppins", sans-serif;
+    text-decoration: none;
+}
+
+.wrapper .sidebar ul li a .icon {
+    color: var(--dark-green);
+    width: 30px;
+    display: inline-block;
+}
+
+.wrapper .sidebar ul li a:hover,
+.wrapper .sidebar ul li a.active{
+    color: var(--dark-green);
+    background: white;
+    border-right: 2px solid black;
+}
+
+.wrapper .sidebar ul li a:hover .icon,
+.wrapper .sidebar ul li a.active .icon {
+    color: var(--dark-green);
+}
+
+.wrapper .sidebar ul li a:hover::before,
+.wrapper .sidebar ul li a:hover::before{
+    display: block;
+}
+
+.wrapper .section {
+    width: calc(100% - 225px);
+    margin-left: 225px;
+    transition: all 0.5s ease-in-out 0s;
+
+}
+
+.wrapper .section .top_navbar { 
+    background-color: var(--light-green);
+    height: 40px;
+    display: flex;
+    align-items: center;
+    padding: 0 40px;
+    width: 100%;
+}
+
+.wrapper .section .top_navbar .hambburger a{
+    font-size: 28px;
+    color: var(--dark-green);
+}
+
+.wrapper .section .top_navbar .hamburger a:hover{
+    color: var(--dark-green);
+}
+
+body.active .wrapper .sidebar {
+    Left: -225px;
+}
+
+body.active .wrapper .section {
+    margin-left: 0%;
+    width: auto;
+}
+
+
+
+/* Add media query for screen widths up to 768px */
+@media only screen and (max-width: 768px) {
+    .person-avatar {
+        height: 80px;
+        width: 100px;
+    }
+
+    .person {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .person h1 {
+        font-size: 0.9rem;
+        margin-top: 5px;
+    }
+
+    .hourly-rate,
+    .-bonus,
+    .-mileage,
+    .date-input,
+    .name-input,
+    .special-date {
+        margin-top: 5px;
+    }
+
+    .hourly-rate input,
+    .-bonus input,
+    .-mileage input,
+    .date-input input,
+    .name-input input,
+    .special-date input {
+        max-width: 100%;
+    }
+
+    .tableHead,
+    .tableBody,
+    .tableFooter {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .tableHead input,
+    .tableBody div,
+    .tableFooter input {
+        font-size: 0.9rem;
+    }
+
+    .week-heading {
+        font-size: 1.2rem;
+    }
+}
+
+/* Add media query for screen widths up to 480px (smartphones) */
+@media only screen and (max-width: 480px) {
+    .container {
+        width: 90%;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+
+    .person h1 {
+        font-size: 0.8rem;
+        margin-top: 3px;
+    }
+
+    .hourly-rate,
+    .-bonus,
+    .-mileage,
+    .date-input,
+    .name-input,
+    .special-date {
+        margin-top: 3px;
+    }
+
+    .hourly-rate input,
+    .-bonus input,
+    .-mileage input,
+    .date-input input,
+    .name-input input,
+    .special-date input {
+        font-size: 0.8rem;
+    }
+
+    .tableHead input,
+    .tableBody div,
+    .tableFooter input {
+        font-size: 0.8rem;
+    }
+
+    .week-heading {
+        font-size: 1rem;
+    }
+}
+
+@media only screen and (max-width: 390px) {
+    .container {
+        width: 90%;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+
+    .person h1 {
+        font-size: 0.8rem;
+        margin-top: 3px;
+    }
+
+    .hourly-rate,
+    .-bonus,
+    .-mileage,
+    .date-input,
+    .name-input,
+    .special-date {
+        margin-top: 3px;
+    }
+
+    .hourly-rate input,
+    .-bonus input,
+    .-mileage input,
+    .date-input input,
+    .name-input input,
+    .special-date input {
+        font-size: 0.8rem;
+    }
+
+    .tableHead input,
+    .tableBody div,
+    .tableFooter input {
+        font-size: 0.8rem;
+    }
+
+    .week-heading {
+        font-size: 1rem;
+    }
+}
+
