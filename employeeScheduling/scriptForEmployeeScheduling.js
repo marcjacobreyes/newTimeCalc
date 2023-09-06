@@ -252,7 +252,7 @@ function updateEvents(date) {
   }
   eventsContainer.innerHTML = events;
   saveEvents();
-}
+} // end of updateEvents function
 
 
 //function to add event
